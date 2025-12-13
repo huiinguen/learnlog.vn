@@ -1,34 +1,32 @@
 <!DOCTYPE html>
 <html lang="vi">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chi Tiết Sản Phẩm</title>
+    <title>Hướng Dẫn & Mẹo Hay</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/sanpham_chitiet.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="css/chatbox.css">
+    <link rel="stylesheet" href="css/huongdan.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="css/chatbox.css"> 
 </head>
+<body>
+
 <nav class="dock-nav" id="dockNav">
     <a href="index.html" title="Gameshow"><i class="fas fa-gamepad"></i><span class="tooltip">Gameshow</span></a>
     <a href="sanpham.html" title="Sản Phẩm"><i class="fas fa-box-archive"></i><span class="tooltip">Sản Phẩm</span></a>
     <a href="ghichu.html" title="Ghi Chú"><i class="fas fa-sticky-note"></i><span class="tooltip">Ghi Chú</span></a>
-    <a href="huongdan.html" title="Hướng Dẫn"><i class="fas fa-info-circle"></i><span class="tooltip">Hướng Dẫn</span></a>
+    <a href="huongdan.html" title="Hướng Dẫn" class="active"><i class="fas fa-info-circle"></i><span class="tooltip">Hướng Dẫn</span></a>
 </nav>
 
-<body>
-    <header>
-        <a href="sanpham.html" class="back-to-list-btn fixed-back-btn"><i class="fas fa-arrow-left"></i> Quay lại</a>
-        <main>
-            <div class="container">
-                <div id="productDetailContainer" class="product-detail">
-                    <p class="loading-text">Đang tải thông tin sản phẩm...</p>
-                </div>
-            </div>
-        </main>
+<main>
+    <div class="container guide-container">
+        <div id="guideContent">
+            <p style="text-align: center; color: #bb86fc;">Đang tải hướng dẫn...</p>
+        </div>
+    </div>
+</main>
 
-        <div id="chatboxContainer" class="chatbox-container">
+<div id="chatboxContainer" class="chatbox-container">
         <button id="chatboxToggle" class="chatbox-toggle">
             <i class="fas fa-comment-dots"></i>
             <span class="chatbox-badge" id="chatboxBadge">1</span>
@@ -58,10 +56,10 @@
         </div>
     </div>
     
-        <script src="js/product/product_data.js"></script>
-        <script src="js/product/sanpham_chitiet.js"></script>
-        <script src="js/chatbox/chatbox-data.js"></script>
-        <script src="js/chatbox/chatbox-logic.js"></script>
-</body>
+<script src="js/main.js"></script>
+<script src="js/huongdan.js"></script> 
+<script src="js/chatbox/chatbox-data.js"></script> 
+<script src="js/chatbox/chatbox-logic.js"></script> 
 
+</body>
 </html>

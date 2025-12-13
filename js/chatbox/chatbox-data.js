@@ -35,7 +35,13 @@ const chatBotKnowledge = [
     // cười-vui vẻ
     {
         keywords: ["hii", "hehe", "kkk", "cười ẻ","vãi", "hì", "kk", "hẹ hẹ"],
-        response: "Cười cái con khỉ 😂 (～o￣3￣)～"
+        response: "Cười cái con khỉ 😂 "
+    },
+
+    // tải app web
+    {
+        keywords:["tải app","tải về","app web","cách tải về"],
+        response:"IOS: nút chia sẻ-> thêm vào mh -> Thêm | Android: menu-> thêm vào màn hình-> thêm",
     },
 
     

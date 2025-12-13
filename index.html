@@ -19,6 +19,7 @@
         <a href="sanpham.html" title="Sản Phẩm"><i class="fas fa-box-archive"></i><span class="tooltip">Sản
                 Phẩm</span></a>
         <a href="ghichu.html" title="Ghi Chú"><i class="fas fa-sticky-note"></i><span class="tooltip">Ghi Chú</span></a>
+        <a href="huongdan.html" title="Hướng Dẫn"><i class="fas fa-info-circle"></i><span class="tooltip">Hướng Dẫn</span></a>
     </nav>
 
     <main id="mainContent">
@@ -89,7 +90,7 @@
 
         <div id="chatboxWindow" class="chatbox-window" style="display: none;">
             <div class="chatbox-header">
-                <h4>Chat GỜ BÊ TÊ</h4>
+                <h4>HVCoder Support Bot</h4>
                 <i class="fas fa-times close-btn" id="chatboxClose"></i>
             </div>
             <div class="chatbox-messages" id="chatboxMessages">
@@ -97,14 +98,20 @@
                     <p>Chào bạn! Tôi có thể giúp gì cho bạn về các chứng chỉ, sản phẩm, hay ghi chú code?</p>
                 </div>
             </div>
-            <div id="chatboxSuggestions" class="chatbox-suggestions">
+            
+            <div id="chatboxSuggestions" class="chatbox-suggestions hidden">
             </div>
+
             <div class="chatbox-input-area">
+                <button id="chatboxMenuToggle" class="chatbox-menu-toggle">
+                    <i class="fas fa-plus"></i>
+                </button>
                 <input type="text" id="chatboxInput" placeholder="Nhập câu hỏi...">
                 <button id="chatboxSend"><i class="fas fa-paper-plane"></i></button>
             </div>
         </div>
     </div>
+    
     <script src="js/main.js"></script>
     <script src="js/game/quiz-data.js"></script>
     <script src="js/game/game-logic.js"></script>

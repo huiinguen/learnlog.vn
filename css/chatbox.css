@@ -126,13 +126,34 @@
     text-align: right;
 }
 
-/* Khu vực Input */
+/* Khu vực Input (ĐÃ CHÈN NÚT DẤU +) */
 .chatbox-input-area {
     display: flex;
     padding: 10px;
     border-top: 1px solid #3a3a5e;
     background: #1a1a2e;
+    align-items: center; /* Căn giữa dọc */
 }
+
+/* Nút Dấu + (Menu Toggle) */
+.chatbox-menu-toggle {
+    background: #5a5a7e; /* Màu nền cho nút Dấu + */
+    color: #e0d6ff;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    font-size: 1.1em;
+    transition: background 0.2s ease, transform 0.2s;
+    margin-right: 10px;
+    flex-shrink: 0; /* Ngăn nút bị co lại */
+}
+
+.chatbox-menu-toggle:hover {
+    background: #7a7aa0;
+}
+
 
 #chatboxInput {
     flex-grow: 1;
@@ -155,6 +176,7 @@
     cursor: pointer;
     font-size: 1.1em;
     transition: background 0.2s ease;
+    flex-shrink: 0;
 }
 
 #chatboxSend:hover {
@@ -199,6 +221,7 @@
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
+    /* CHÚ Ý: Đã chuyển vị trí hiển thị lên trên input area */
 }
 
 .suggestion-chip {

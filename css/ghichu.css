@@ -201,32 +201,7 @@ body {
     color: #d1c4e9; /* Tím nhạt */
 }
 
-/* 7. Block Note/Cảnh báo */
-.note-warning, .note-info {
-    padding: 10px 15px;
-    border-radius: 8px;
-    margin-bottom: 20px;
-    font-size: 0.95em;
-    display: flex;
-    gap: 10px;
-    align-items: start;
-}
-
-/* Kiểu Warning (Màu cam/đỏ nhạt) */
-.note-warning {
-    background: rgba(255, 82, 82, 0.1);
-    border-left: 3px solid #ff5252;
-    color: #ff8a80;
-}
-
-/* Kiểu Info (Màu xanh/tím) */
-.note-info {
-    background: rgba(187, 134, 252, 0.1);
-    border-left: 3px solid #bb86fc;
-    color: #e0aaff;
-}
-
-/* 8. Block Code (Giao diện giống Editor) */
+/* 7. Block Code (Giao diện giống Editor) */
 .code-snippet {
     background: #0f0f1e; /* Đen gần tuyệt đối */
     border-radius: 8px;
@@ -294,4 +269,153 @@ body {
     .note-grid {
         grid-template-columns: 1fr; /* 1 cột trên mobile */
     }
+}
+
+/* ============================================ */
+/* ẢNH VÀ KHUNG CHIA ĐÔI (IMAGE + CODE) - LOGIC MỚI */
+/* ============================================ */
+
+/* Khối chung chứa cả code và ảnh/output */
+.code-split .split-content {
+    display: flex;
+    flex-direction: row; /* Mặc định chia ngang */
+    gap: 10px;
+}
+
+/* Phần hiển thị ảnh/output (Khung chứa ảnh) */
+.code-visual {
+    flex: 0 0 20%; /* Ảnh chiếm 40% chiều rộng của .split-content */
+    max-width: 200px; /* Giới hạn tối đa 300px */
+    
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.1);
+    border-right: 1px solid #333;
+    box-sizing: border-box; /* Đảm bảo padding không làm ảnh hưởng đến 40% */
+}
+
+.code-visual .visual-label {
+    position: absolute;
+    top: 5px; right: 5px;
+    background: #00ff9d;
+    color: #1a1a2e;
+    padding: 2px 5px;
+    border-radius: 4px;
+    font-size: 0.7em;
+    font-weight: bold;
+}
+
+/* Khối Code khi chia đôi */
+.code-split .code-block {
+    flex: 1; /* Code sẽ chiếm phần còn lại (60% nếu ảnh là 40%) */
+    margin: 0;
+    padding: 10px 15px; 
+}
+
+/* ẢNH (Image) */
+.note-image {
+    max-width: 100%; /* Đảm bảo responsive */
+    height: auto;
+    border-radius: 4px;
+    display: block;
+    object-fit: contain; /* Giữ tỷ lệ ảnh không bị méo */
+    margin: 0 auto; /* Căn giữa ảnh */
+}
+
+/* Trường hợp chỉ có ảnh (image-only) */
+.code-snippet.image-only {
+    background: #0f0f1e; 
+    border: 1px solid #333;
+}
+
+.code-snippet.image-only .code-header {
+    background: #1e1e38;
+}
+
+.code-snippet.image-only .image-content {
+    padding: 15px;
+    text-align: center;
+    /* Thêm giới hạn chiều rộng cho ảnh trong khung (Nếu muốn ảnh nhỏ hơn 100% card) */
+    /* max-width: 400px; */ 
+    /* margin: 0 auto; */
+}
+
+
+/* Responsive cho màn hình nhỏ */
+@media (max-width: 600px) {
+    /* Chuyển sang xếp chồng (stack) trên màn hình nhỏ */
+    .code-split .split-content {
+        flex-direction: column;
+    }
+
+    /* Xóa đường viền thừa và đảm bảo code-visual chiếm toàn bộ chiều rộng */
+    .code-visual {
+        border-right: none; 
+        border-bottom: 1px solid #333;
+        flex-basis: auto; /* Reset flex-basis */
+        max-width: 100%; /* Đảm bảo chiếm toàn bộ chiều rộng */
+    }
+}
+/* ============================================ */
+/* MODAL/LIGHTBOX CHO ẢNH PHÓNG TO */
+/* ============================================ */
+
+/* Modal (Overlay toàn màn hình) */
+.image-modal {
+    display: none; 
+    position: fixed; 
+    z-index: 9999; /* Đảm bảo nằm trên mọi thứ */
+    padding-top: 50px; 
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; 
+    background-color: rgba(0, 0, 0, 0.9); /* Nền đen mờ */
+    opacity: 0; /* Bắt đầu ẩn, dùng transition */
+    transition: opacity 0.3s ease-in-out;
+}
+
+.image-modal.visible {
+    display: block;
+    opacity: 1;
+}
+
+/* Ảnh được phóng to (nằm trong Modal) */
+.modal-content {
+    margin: auto;
+    display: block;
+    width: 90%; 
+    max-width: 1000px; /* Giới hạn kích thước tối đa */
+    height: auto;
+    object-fit: contain; /* Đảm bảo ảnh không bị méo */
+    transform: scale(0.8); /* Bắt đầu nhỏ hơn */
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Khi Modal mở, ảnh phóng to */
+.image-modal.visible .modal-content {
+    transform: scale(1);
+}
+
+/* Nút Đóng (X) */
+.close-btn-modal {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+    cursor: pointer;
+    z-index: 10000;
+}
+
+.close-btn-modal:hover,
+.close-btn-modal:focus {
+    color: #bb86fc;
+    text-decoration: none;
+    cursor: pointer;
 }

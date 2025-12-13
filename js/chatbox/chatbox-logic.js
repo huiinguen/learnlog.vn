@@ -17,13 +17,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const badge = document.getElementById('chatboxBadge');
     const suggestionsContainer = document.getElementById('chatboxSuggestions'); 
     
-    // ĐÃ XÓA: Khai báo File Elements (fileInput, fileTriggerBtn)
-
+    // THÊM: Nút Dấu +
+    const menuToggleBtn = document.getElementById('chatboxMenuToggle');
+    
+    // Nếu nút Dấu + không tồn tại, log lỗi và vẫn tiếp tục chạy logic chat cơ bản
+    if (!menuToggleBtn) {
+        console.warn('Cảnh báo: Không tìm thấy DOM element #chatboxMenuToggle. Kiểm tra chatbox-injector.js để đảm bảo HTML đã được thêm.');
+    }
 
     // === 2. Giao diện & Trạng thái ===
     let isChatOpen = false;
+    let isSuggestionsVisible = false; // Trạng thái hiển thị menu gợi ý
 
-    // Bắt đầu ẩn badge, hiện lại nếu có tin nhắn mới (mặc định cho lần load đầu là 1)
+    // Các gợi ý ban đầu (hiển thị khi bấm nút Dấu +)
+    const initialSuggestions = ["Tài liệu", "Tìm Sản phẩm", "Time", "Liên hệ", "Cài app web"]; 
+
     if (badge) badge.style.display = 'block';
 
     toggleBtn.addEventListener('click', () => {
@@ -33,20 +41,33 @@ document.addEventListener('DOMContentLoaded', () => {
             if (badge) badge.style.display = 'none';
             scrollToBottom();
             inputField.focus();
-            // Đảm bảo initialSuggestions đã được khai báo hoặc lấy từ data
-            const initialSuggestions = ["Tài liệu", "Tìm Sản phẩm", "Time", "Liên hệ"]; 
-            renderSuggestions(initialSuggestions); 
         } else {
-            suggestionsContainer.innerHTML = ''; 
+            // Đóng cửa sổ chat thì ẩn suggestions
+            suggestionsContainer.classList.add('hidden');
+            isSuggestionsVisible = false;
         }
     });
 
     closeBtn.addEventListener('click', () => {
         isChatOpen = false;
         chatWindow.style.display = 'none';
-        suggestionsContainer.innerHTML = ''; 
+        suggestionsContainer.classList.add('hidden'); // Ẩn khi đóng
+        isSuggestionsVisible = false;
     });
     
+    // THÊM: Xử lý sự kiện cho nút Dấu + (Menu Toggle)
+    if (menuToggleBtn) {
+        menuToggleBtn.addEventListener('click', () => {
+            isSuggestionsVisible = !isSuggestionsVisible;
+            if (isSuggestionsVisible) {
+                // Chỉ hiển thị suggestions khi người dùng bấm dấu +
+                renderSuggestions(initialSuggestions);
+            } else {
+                suggestionsContainer.classList.add('hidden');
+            }
+        });
+    }
+
     // === 3. Xử lý Gợi ý (Suggestions) ===
 
     function renderSuggestions(suggestions) {
@@ -61,8 +82,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 chip.addEventListener('click', handleSuggestionClick);
                 suggestionsContainer.appendChild(chip);
             });
-            // Giả định .chatbox-suggestions.hidden sẽ display: none
+            // Hiển thị suggestions
             suggestionsContainer.classList.remove('hidden'); 
+            scrollToBottom(); // Cuộn xuống để thấy suggestions
         } else {
             suggestionsContainer.classList.add('hidden');
         }
@@ -74,6 +96,9 @@ document.addEventListener('DOMContentLoaded', () => {
         appendMessage(keyword, 'user-message', false);
         scrollToBottom();
         
+        suggestionsContainer.classList.add('hidden'); // Ẩn suggestions sau khi chọn
+        isSuggestionsVisible = false;
+
         setTimeout(() => {
             // Sử dụng logic Bot cho cả Suggestion
             let botResponse = getBotResponse(keyword); 
@@ -83,14 +108,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
             appendMessage(botResponse, 'bot-message', true);
             scrollToBottom();
-            
-            suggestionsContainer.classList.add('hidden');
         }, 800);
     }
 
 
-    // === 4. Xử lý Tệp tin (ĐÃ XÓA TOÀN BỘ LOGIC FILE UPLOAD) ===
-    
     // === 5. Xử lý Tin nhắn Người dùng (Text Message Logic) ===
     
     inputField.addEventListener('keypress', (e) => {
@@ -109,7 +130,8 @@ document.addEventListener('DOMContentLoaded', () => {
         inputField.value = '';
         scrollToBottom();
         
-        suggestionsContainer.classList.add('hidden'); 
+        suggestionsContainer.classList.add('hidden'); // Ẩn suggestions khi gửi tin nhắn
+        isSuggestionsVisible = false; // Đặt lại trạng thái
 
         setTimeout(() => {
             let botResponse = getBotResponse(text);

@@ -19,7 +19,14 @@ document.addEventListener('DOMContentLoaded', () => {
                         <p>Chào bạn! Tôi có thể giúp gì cho bạn về các chứng chỉ, sản phẩm, hay ghi chú code?</p>
                     </div>
                 </div>
+                
+                <div id="chatboxSuggestions" class="chatbox-suggestions hidden">
+                    </div>
+
                 <div class="chatbox-input-area">
+                    <button id="chatboxMenuToggle" class="chatbox-menu-toggle">
+                        <i class="fas fa-plus"></i>
+                    </button>
                     <input type="text" id="chatboxInput" placeholder="Nhập câu hỏi...">
                     <button id="chatboxSend"><i class="fas fa-paper-plane"></i></button>
                 </div>
