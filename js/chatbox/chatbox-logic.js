@@ -2,8 +2,8 @@
 
 document.addEventListener('DOMContentLoaded', () => {
     // Đảm bảo chatBotKnowledge và defaultResponses đã được load từ chatbox-data.js
-    if (typeof chatBotKnowledge === 'undefined') {
-        console.error('Lỗi: Không tìm thấy dữ liệu chatBotKnowledge.');
+    if (typeof chatBotKnowledge === 'undefined' || typeof defaultResponses === 'undefined') {
+        console.error('Lỗi: Không tìm thấy dữ liệu chatBotKnowledge hoặc defaultResponses. Kiểm tra chatbox-data.js.');
         return;
     }
 
@@ -15,20 +15,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const inputField = document.getElementById('chatboxInput');
     const sendBtn = document.getElementById('chatboxSend');
     const badge = document.getElementById('chatboxBadge');
-    const suggestionsContainer = document.getElementById('chatboxSuggestions'); // Bổ sung
+    const suggestionsContainer = document.getElementById('chatboxSuggestions'); 
+    
+    // ĐÃ XÓA: Khai báo File Elements (fileInput, fileTriggerBtn)
 
-    // === BỔ SUNG: Danh sách Gợi ý ===
-    const initialSuggestions = [ // Bổ sung
-        "Hỏi về Chứng chỉ", 
-        "Tìm Sản phẩm", 
-        "Tra Ghi chú code", 
-        "Liên hệ hỗ trợ"
-    ];
 
     // === 2. Giao diện & Trạng thái ===
     let isChatOpen = false;
 
-    // Ẩn badge tin nhắn mới khi mở lần đầu
+    // Bắt đầu ẩn badge, hiện lại nếu có tin nhắn mới (mặc định cho lần load đầu là 1)
     if (badge) badge.style.display = 'block';
 
     toggleBtn.addEventListener('click', () => {
@@ -38,19 +33,22 @@ document.addEventListener('DOMContentLoaded', () => {
             if (badge) badge.style.display = 'none';
             scrollToBottom();
             inputField.focus();
-            renderSuggestions(initialSuggestions); // Bổ sung
+            // Đảm bảo initialSuggestions đã được khai báo hoặc lấy từ data
+            const initialSuggestions = ["Tài liệu", "Tìm Sản phẩm", "Time", "Liên hệ"]; 
+            renderSuggestions(initialSuggestions); 
         } else {
-            suggestionsContainer.innerHTML = ''; // Bổ sung
+            suggestionsContainer.innerHTML = ''; 
         }
     });
 
     closeBtn.addEventListener('click', () => {
         isChatOpen = false;
         chatWindow.style.display = 'none';
-        suggestionsContainer.innerHTML = ''; // Bổ sung
+        suggestionsContainer.innerHTML = ''; 
     });
+    
+    // === 3. Xử lý Gợi ý (Suggestions) ===
 
-    // === BỔ SUNG: Logic cho Gợi ý (Giữ nguyên) ===
     function renderSuggestions(suggestions) {
         suggestionsContainer.innerHTML = '';
         if (suggestions && suggestions.length > 0) {
@@ -63,7 +61,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 chip.addEventListener('click', handleSuggestionClick);
                 suggestionsContainer.appendChild(chip);
             });
-            suggestionsContainer.classList.remove('hidden');
+            // Giả định .chatbox-suggestions.hidden sẽ display: none
+            suggestionsContainer.classList.remove('hidden'); 
         } else {
             suggestionsContainer.classList.add('hidden');
         }
@@ -76,29 +75,24 @@ document.addEventListener('DOMContentLoaded', () => {
         scrollToBottom();
         
         setTimeout(() => {
-            let botResponse;
+            // Sử dụng logic Bot cho cả Suggestion
+            let botResponse = getBotResponse(keyword); 
             
-            // Ánh xạ gợi ý thành từ khóa tìm kiếm chính xác
-            if (keyword.includes("Chứng chỉ")) {
-                botResponse = getBotResponse("chứng chỉ gameshow");
-            } else if (keyword.includes("Sản phẩm")) {
-                botResponse = getBotResponse("tìm sản phẩm");
-            } else if (keyword.includes("Ghi chú code")) {
-                botResponse = getBotResponse("tra mẹo ghi chú");
-            } else if (keyword.includes("Liên hệ")) {
-                botResponse = getBotResponse("liên hệ hotline");
-            } else {
-                botResponse = getBotResponse(keyword); // Fallback
-            }
-            
+            // Xử lý các chức năng đặc biệt ngay sau khi có phản hồi
+            botResponse = handleSpecialFunctions(botResponse); 
+
             appendMessage(botResponse, 'bot-message', true);
             scrollToBottom();
             
             suggestionsContainer.classList.add('hidden');
         }, 800);
     }
+
+
+    // === 4. Xử lý Tệp tin (ĐÃ XÓA TOÀN BỘ LOGIC FILE UPLOAD) ===
     
-    // === 3. Xử lý tin nhắn ===
+    // === 5. Xử lý Tin nhắn Người dùng (Text Message Logic) ===
+    
     inputField.addEventListener('keypress', (e) => {
         if (e.key === 'Enter') {
             e.preventDefault();
@@ -115,16 +109,23 @@ document.addEventListener('DOMContentLoaded', () => {
         inputField.value = '';
         scrollToBottom();
         
-        suggestionsContainer.classList.add('hidden'); // Bổ sung
+        suggestionsContainer.classList.add('hidden'); 
 
         setTimeout(() => {
-            const botResponse = getBotResponse(text);
+            let botResponse = getBotResponse(text);
+            
+            // Xử lý các chức năng đặc biệt (Time, Report)
+            botResponse = handleSpecialFunctions(botResponse); 
+            
             appendMessage(botResponse, 'bot-message', true);
             scrollToBottom();
         }, 800);
     }
 
-    // Hàm thêm tin nhắn (Giữ nguyên)
+    
+    // === 6. Các Hàm Tiện ích & Xử lý Đặc biệt ===
+
+    // Hàm thêm tin nhắn
     function appendMessage(text, type, useHtml = false) {
         const messageDiv = document.createElement('div');
         messageDiv.className = `message ${type}`;
@@ -146,21 +147,66 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // === 4. Logic Bot (Rule-based) ĐÃ TỐI ƯU ===
+    // Xử lý chức năng đặc biệt (Time, Report)
+    function handleSpecialFunctions(response) {
+        let result = response;
+
+        // Xử lý [CURRENT_TIME]
+        if (result.includes("[CURRENT_TIME]")) {
+            const timeString = getCurrentTimeFormatted();
+            result = result.replace("[CURRENT_TIME]", timeString);
+        }
+        
+        // Xử lý [report]
+        if (result.includes("[report]")) {
+            // Vui lòng thay thế bằng LINK FORM Báo cáo Lỗi thực tế của bạn
+            const reportLink = 'https://docs.google.com/forms/d/e/...'; 
+            const reportText = `Vui lòng báo cáo lỗi tại đây: <a href="${reportLink}" target="_blank" style="color: #03dac6; font-weight: bold;">Mẫu Báo cáo Lỗi</a>.`;
+            result = result.replace("[report]", reportText);
+        }
+
+        return result;
+    }
+
+    // Hàm lấy và định dạng thời gian thực
+    function getCurrentTimeFormatted() {
+        const now = new Date();
+        
+        // Lấy Ngày/Tháng/Năm
+        const date = now.toLocaleDateString('vi-VN', {
+            day: '2-digit',
+            month: '2-digit',
+            year: 'numeric'
+        });
+        
+        // Lấy Giờ/Phút/Giây
+        const time = now.toLocaleTimeString('vi-VN', {
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit',
+            hour12: false 
+        });
+        
+        // Lấy Thứ trong tuần
+        const dayOfWeek = now.toLocaleDateString('vi-VN', { weekday: 'long' });
+
+        return `${time} - ${date} (${dayOfWeek}).`;
+    }
+
+
+    // === 7. Logic Bot (Rule-based) ===
     function getBotResponse(userInput) {
         const inputLower = userInput.toLowerCase();
         let bestMatch = null;
-        let longestKeywordLength = 0; // Để ưu tiên khớp cụm từ dài nhất
+        let longestKeywordLength = 0; 
 
         // 1. Tìm kiếm và ưu tiên từ khóa:
         for (const item of chatBotKnowledge) {
             for (const keyword of item.keywords) {
                 const keywordLower = keyword.toLowerCase();
 
-                // Kiểm tra nếu input chứa từ khóa và từ khóa này là dài nhất tìm được
                 if (inputLower.includes(keywordLower) && keywordLower.length > longestKeywordLength) {
                     
-                    // Cập nhật kết quả khớp tốt nhất
                     longestKeywordLength = keywordLower.length;
                     bestMatch = item;
                 }
