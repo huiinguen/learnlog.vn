@@ -170,12 +170,17 @@
 @media (max-width: 450px) {
     /* Full width trên mobile */
     .chatbox-window {
-        width: 100vw; /* Chiếm 100% chiều rộng viewport */
-        height: 100vh; /* Chiếm 100% chiều cao viewport */
-        bottom: 0;
+        /* Ghi đè các thuộc tính mặc định để nó neo vào viewport */
+        position: fixed; /* Rất quan trọng, nó sẽ neo vào viewport */
+        width: 100vw; 
+        height: 100vh; 
+        top: 0; 
+        left: 0;
         right: 0;
-        top: 0; /* Đảm bảo cửa sổ dính sát lên trên */
-        border-radius: 0; /* Xóa bo góc để cửa sổ liền mạch */
+        bottom: 0;
+        border-radius: 0; 
+        z-index: 1018; 
+        margin: 0; 
     }
     /* Đảm bảo nút toggle nằm ở vị trí cố định, không bị dính vào dock */
     .chatbox-container {
