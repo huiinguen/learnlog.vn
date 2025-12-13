@@ -170,18 +170,17 @@
 @media (max-width: 450px) {
     /* Full width trên mobile */
     .chatbox-window {
-        width: 100vw;
-        height: 100vh;
+        width: 100vw; /* Chiếm 100% chiều rộng viewport */
+        height: 100vh; /* Chiếm 100% chiều cao viewport */
         bottom: 0;
         right: 0;
-        border-radius: 0;
+        top: 0; /* Đảm bảo cửa sổ dính sát lên trên */
+        border-radius: 0; /* Xóa bo góc để cửa sổ liền mạch */
     }
+    /* Đảm bảo nút toggle nằm ở vị trí cố định, không bị dính vào dock */
     .chatbox-container {
-        bottom: 75px; /* Giữ nút toggle cao hơn dock */
-    }
-    /* Ẩn nút toggle khi cửa sổ chat mở full màn hình */
-    .chatbox-window:not([style*="none"]) ~ .chatbox-toggle {
-        display: none;
+        bottom: 75px; /* Giữ nút toggle cao hơn dock (75px) */
+        right: 15px; 
     }
 }
 /* === Bổ sung: Gợi ý Từ khóa === */
