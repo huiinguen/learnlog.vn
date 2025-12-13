@@ -1,0 +1,218 @@
+/* ============================================ */
+/* CHATBOX STYLES - Góc phải dưới (tránh Dock) */
+/* ============================================ */
+
+/* Container và nút ẩn/hiện */
+.chatbox-container {
+    position: fixed;
+    bottom: 100px; /* Cách đáy 20px */
+    right: 30px; /* Cách bên phải 20px */
+    z-index: 1017; /* Cao hơn Dock Nav (1001) */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Nút Toggle chính */
+.chatbox-toggle {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(45deg, #bb86fc, #03dac6);
+    color: #1a1a2e;
+    border: none;
+    font-size: 1.8em;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(187, 134, 252, 0.6);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+}
+
+.chatbox-toggle:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(187, 134, 252, 0.8);
+}
+
+/* Badge thông báo (tin nhắn mới) */
+.chatbox-badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: #ff3b5c; /* Màu cảnh báo/tin nhắn mới */
+    color: white;
+    font-size: 0.7em;
+    padding: 2px 6px;
+    border-radius: 50%;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Cửa sổ Chat Box */
+.chatbox-window {
+    width: 350px;
+    height: 450px;
+    background: #1a1a2e;
+    border: 2px solid #3a3a5e;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.7);
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    bottom: 75px; /* Nằm trên nút toggle */
+    right: 0;
+    overflow: hidden;
+}
+
+/* Header */
+.chatbox-header {
+    padding: 15px;
+    background: #221b35;
+    color: #e0d6ff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #3a3a5e;
+}
+
+.chatbox-header h4 {
+    margin: 0;
+    color: #03dac6; /* Màu neon cho tiêu đề bot */
+}
+
+.chatbox-header .close-btn {
+    cursor: pointer;
+    color: #bb86fc;
+    transition: color 0.2s;
+}
+
+.chatbox-header .close-btn:hover {
+    color: #ff3b5c;
+}
+
+/* Khu vực Tin nhắn */
+.chatbox-messages {
+    flex-grow: 1;
+    padding: 15px;
+    overflow-y: auto;
+    background: #1e1e38; /* Nền tin nhắn nhạt hơn */
+}
+
+/* Định dạng chung tin nhắn */
+.message {
+    max-width: 85%;
+    padding: 10px 15px;
+    border-radius: 18px;
+    margin-bottom: 10px;
+    line-height: 1.4;
+    position: relative;
+    word-wrap: break-word;
+    animation: fadeInMessage 0.3s ease-out;
+}
+
+/* Tin nhắn của Bot */
+.bot-message {
+    background-color: #3a3a5e;
+    color: #e0d6ff;
+    border-bottom-left-radius: 4px;
+    margin-right: auto;
+}
+
+/* Tin nhắn của Người dùng */
+.user-message {
+    background: linear-gradient(90deg, #bb86fc, #9e86ff);
+    color: #1a1a2e;
+    border-bottom-right-radius: 4px;
+    margin-left: auto;
+    text-align: right;
+}
+
+/* Khu vực Input */
+.chatbox-input-area {
+    display: flex;
+    padding: 10px;
+    border-top: 1px solid #3a3a5e;
+    background: #1a1a2e;
+}
+
+#chatboxInput {
+    flex-grow: 1;
+    padding: 10px;
+    border-radius: 20px;
+    border: 1px solid #5a5a7e;
+    background: #221b35;
+    color: #e0d6ff;
+    outline: none;
+    margin-right: 10px;
+}
+
+#chatboxSend {
+    background: #03dac6;
+    color: #1a1a2e;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    font-size: 1.1em;
+    transition: background 0.2s ease;
+}
+
+#chatboxSend:hover {
+    background: #47f7e9;
+}
+
+/* Hiệu ứng */
+@keyframes fadeInMessage {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 450px) {
+    /* Full width trên mobile */
+    .chatbox-window {
+        width: 100vw;
+        height: 100vh;
+        bottom: 0;
+        right: 0;
+        border-radius: 0;
+    }
+    .chatbox-container {
+        bottom: 75px; /* Giữ nút toggle cao hơn dock */
+    }
+    /* Ẩn nút toggle khi cửa sổ chat mở full màn hình */
+    .chatbox-window:not([style*="none"]) ~ .chatbox-toggle {
+        display: none;
+    }
+}
+/* === Bổ sung: Gợi ý Từ khóa === */
+.chatbox-suggestions {
+    padding: 10px;
+    background: #1a1a2e;
+    border-top: 1px solid #3a3a5e;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.suggestion-chip {
+    padding: 6px 10px;
+    border-radius: 20px;
+    background: #3a3a5e; /* Màu nền tím đậm nhạt */
+    color: #03dac6; /* Màu chữ neon */
+    font-size: 0.8em;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+    border: 1px solid #03dac6;
+    user-select: none;
+}
+
+.suggestion-chip:hover {
+    background: #03dac6;
+    color: #1a1a2e;
+    border-color: #03dac6;
+}
+
+/* Ẩn nếu không có gợi ý */
+.chatbox-suggestions.hidden {
+    display: none;
+}

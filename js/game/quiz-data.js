@@ -1,0 +1,74 @@
+// ================================================
+// DỮ LIỆU CÂU HỎI CHO CHẾ ĐỘ THI CHỨNG CHỈ
+// ================================================
+const quizData = {
+    cpp: [
+        { question: "Trong C++, hàm nào được gọi tự động khi đối tượng bị hủy?", options: ["constructor", "destructor", "finalizer", "delete"], correct: 1 },
+        { question: "Từ khóa nào dùng để ngăn chặn class bị kế thừa trong C++?", options: ["override", "final", "abstract", "private"], correct: 1 },
+        { question: "Sự khác nhau cơ bản giữa 'std::vector' và 'std::list' là gì?", options: ["vector dùng mảng tĩnh, list dùng mảng động", "vector là mảng liên tục, list là danh sách liên kết", "list nhanh hơn trong truy cập ngẫu nhiên", "vector không thể thay đổi kích thước"], correct: 1 },
+        { question: "Mục đích chính của từ khóa `const` đặt sau tên hàm trong C++ là gì?", options: ["Ngăn hàm bị ghi đè", "Đảm bảo hàm không thay đổi trạng thái đối tượng", "Đặt hằng số trong hàm", "Biến hàm thành hàm tĩnh"], correct: 1 },
+        { question: "Trong C++, cách thức cấp phát bộ nhớ động nào nên được ưu tiên sử dụng cho các đối tượng?", options: ["malloc() và free()", "new và delete", "std::unique_ptr", "static_cast"], correct: 2 },
+        { question: "Trong C++, tham chiếu (reference) phải được khởi tạo khi nào?", options: ["Bất cứ lúc nào", "Chỉ trong constructor", "Khi được khai báo", "Không cần khởi tạo"], correct: 2 },
+        { question: "Lợi ích chính của việc sử dụng 'inline function' là gì?", options: ["Tăng kích thước chương trình", "Giảm overhead của việc gọi hàm", "Bắt buộc hàm phải là public", "Tăng tốc độ compile"], correct: 1 },
+        { question: "Sự khác biệt giữa khai báo struct và class trong C++ là gì?", options: ["Không khác biệt", "Struct mặc định là private, Class mặc định là public", "Struct mặc định là public, Class mặc định là private", "Chỉ struct mới có thể dùng kế thừa"], correct: 2 },
+        { question: "Từ khóa `virtual` trong C++ dùng để làm gì?", options: ["Khai báo hàm trừu tượng", "Ngăn chặn hàm bị ghi đè", "Cho phép hàm được ghi đè trong các lớp con", "Định nghĩa hàm nội tuyến"], correct: 2 },
+        { question: "Trong C++, 'Shallow Copy' và 'Deep Copy' khác nhau ở điểm nào?", options: ["Shallow Copy chỉ sao chép con trỏ, Deep Copy sao chép giá trị", "Deep Copy nhanh hơn Shallow Copy", "Chỉ Shallow Copy hoạt động với mảng", "Chỉ Deep Copy cần Custom Copy Constructor"], correct: 0 },
+        { question: "Khái niệm RAII trong C++ liên quan đến vấn đề gì?", options: ["Tái sử dụng code", "Quản lý tài nguyên tự động", "Phân tích cú pháp nhanh", "Kết nối cơ sở dữ liệu"], correct: 1 },
+        { question: "Kế thừa đa hình (Polymorphism) trong C++ chủ yếu được kích hoạt nhờ vào tính năng nào?", options: ["Function overloading", "Templates", "Virtual functions", "Friend classes"], correct: 2 },
+    ],
+    python: [
+        { question: "Trong Python, `list[:] = []` và `list = []` khác nhau thế nào?", options: ["Không khác nhau", "Cái đầu chỉ xóa phần tử, giữ địa chỉ nhớ", "Cái đầu tạo list mới", "Cái sau báo lỗi"], correct: 1 },
+        { question: "Phương thức nào được gọi khi bạn dùng hàm `len(obj)` trong Python?", options: ["__size__", "__length__", "__len__", "length"], correct: 2 },
+        { question: "Python dùng cơ chế quản lý bộ nhớ nào?", options: ["Garbage Collection (GC)", "Reference Counting", "Cả hai (GC & RC)", "Manual Memory Management"], correct: 2 },
+        { question: "Kiểu dữ liệu nào được dùng để lưu trữ các cặp key-value không sắp xếp (unordered) trong Python?", options: ["List", "Tuple", "Set", "Dictionary"], correct: 3 },
+        { question: "Trong Python, cách nào tốt nhất để lặp qua các phần tử và cả chỉ mục (index) của chúng?", options: ["for i in list: print(i)", "for i, val in list:", "for i, val in enumerate(list):", "while loop"], correct: 2 },
+        { question: "Đâu là cách tạo một Tuple trong Python?", options: ["(1, 2, 3)", "[1, 2, 3]", "{1, 2, 3}", "<1, 2, 3>"], correct: 0 },
+        { question: "Mục đích của `__init__` method trong class Python là gì?", options: ["Khởi tạo class", "Khởi tạo đối tượng (Constructor)", "Hủy đối tượng", "Định nghĩa phương thức tĩnh"], correct: 1 },
+        { question: "Trong Python, điều kiện để một hàm là Generator là gì?", options: ["Phải có từ khóa `return`", "Phải có từ khóa `yield`", "Phải là hàm đệ quy", "Phải là phương thức của class"], correct: 1 },
+        { question: "Từ khóa `pass` trong Python có ý nghĩa gì?", options: ["Thoát khỏi vòng lặp", "Định nghĩa một khối code rỗng", "Báo lỗi cú pháp", "Định nghĩa hằng số"], correct: 1 },
+        { question: "PEP 8 quy định về điều gì?", options: ["Tên của các biến và hàm", "Cách thức quản lý bộ nhớ", "Phong cách lập trình (Coding Style)", "Thư viện chuẩn của Python"], correct: 2 },
+        { question: "Trong Python, từ khóa nào được dùng để đóng gói (encapsulation) một thuộc tính?", options: ["private", "protected", "Dùng gạch dưới (_) hoặc gạch dưới kép (__)", "final"], correct: 2 },
+        { question: "Lệnh nào được dùng để cài đặt thư viện bên ngoài trong Python?", options: ["npm install", "yarn add", "pip install", "python get-lib"], correct: 2 },
+    ],
+    java: [
+        { question: "Lợi ích chính của việc sử dụng Interface trong Java là gì?", options: ["Ngăn chặn đa kế thừa", "Đảm bảo tính đóng gói", "Hỗ trợ Đa hình (Polymorphism) và định nghĩa hợp đồng hành vi", "Tăng tốc độ thực thi"], correct: 2 },
+        { question: "Từ khóa nào được dùng để cấm ghi đè (override) một method trong lớp con?", options: ["abstract", "static", "final", "private"], correct: 2 },
+        { question: "Trong Java, Primitive Data Type được lưu trữ ở đâu?", options: ["Heap", "Stack", "Metaspace", "Permanent Generation"], correct: 1 },
+        { question: "Phương thức nào trong Java được gọi tự động khi Garbage Collector quyết định dọn dẹp đối tượng?", options: ["destroy()", "finalize()", "cleanup()", "dispose()"], correct: 1 },
+        { question: "Điều gì xảy ra khi bạn so sánh hai chuỗi (`String a`, `String b`) bằng toán tử `==` trong Java?", options: ["So sánh giá trị nội dung", "So sánh địa chỉ bộ nhớ", "Luôn trả về false", "Lỗi cú pháp"], correct: 1 },
+        { question: "Cơ chế nào được dùng để xử lý các ngoại lệ (exceptions) không được kiểm soát trong Java?", options: ["try-catch", "throws", "finally", "try-with-resources"], correct: 0 },
+        { question: "Từ khóa nào được dùng để truy cập thành viên của lớp cha (superclass) trong Java?", options: ["this", "parent", "super", "base"], correct: 2 },
+        { question: "JRE (Java Runtime Environment) bao gồm những thành phần nào?", options: ["JVM và Compiler", "JDK và JVM", "JVM và Thư viện chuẩn", "Chỉ có JVM"], correct: 2 },
+    ],
+    programming: [ // Câu hỏi tổng hợp (OOP, Git, Data structure)
+        { question: "Lệnh `git reset --hard HEAD~1` sẽ làm gì?", options: ["Xóa commit gần nhất và giữ thay đổi", "Xóa commit gần nhất và xóa luôn thay đổi", "Tạo branch mới", "Chỉ xóa staging area"], correct: 1 },
+        { question: "Xử lý đa luồng (Multithreading) có lợi ích chính là gì?", options: ["Tăng tốc độ compile", "Thực hiện nhiều tác vụ đồng thời, tối ưu hóa CPU", "Giảm sử dụng bộ nhớ", "Đơn giản hóa code"], correct: 1 },
+        { question: "Khái niệm 'Encapsulation' (Đóng gói) trong OOP là gì?", options: ["Khả năng xử lý nhiều hình thái", "Ẩn dữ liệu và chỉ cho phép truy cập qua interface công cộng", "Khả năng kế thừa thuộc tính", "Khả năng tái sử dụng code"], correct: 1 },
+        { question: "Cấu trúc dữ liệu nào sử dụng cơ chế LIFO (Last-In, First-Out)?", options: ["Queue", "Stack", "Heap", "Linked List"], correct: 1 },
+        { question: "Trong lập trình, thuật toán nào thường được sử dụng để tìm kiếm trong một mảng đã sắp xếp (sorted array)?", options: ["Linear Search", "Binary Search", "Depth-First Search", "Bubble Sort"], correct: 1 },
+    ],
+    cybersecurity: [
+        // CÂU HỎI MỚI - TẬP TRUNG VÀO NHẬN BIẾT & THAO TÁC BẢO MẬT
+        { question: "Hành động nào an toàn nhất khi nhận được email yêu cầu cung cấp mật khẩu hoặc thông tin thẻ tín dụng?", options: ["Bấm vào link và điền thông tin", "Chuyển tiếp cho bạn bè cảnh báo", "Gọi điện trực tiếp cho tổ chức đó để xác nhận", "Nhấn nút 'Trả lời' và hỏi lại người gửi"], correct: 2 },
+        { question: "Dấu hiệu dễ nhận biết nhất của một trang web lừa đảo (Phishing) là gì?", options: ["Sử dụng giao thức HTTPS", "URL có lỗi chính tả hoặc tên miền lạ (ví dụ: fäcebook.com)", "Trang web load chậm", "Có nhiều hình ảnh"], correct: 1 },
+        { question: "Hai yếu tố xác thực (2FA) hoạt động như thế nào?", options: ["Dùng hai mật khẩu khác nhau", "Yêu cầu mật khẩu và một mã tạm thời (OTP) từ thiết bị khác", "Chỉ dùng vân tay và khuôn mặt", "Chỉ dùng mật khẩu"], correct: 1 },
+        { question: "Bạn nên làm gì ngay lập tức nếu phát hiện tài khoản ngân hàng hoặc mạng xã hội bị hack?", options: ["Xóa tài khoản đó", "Đăng nhập lại và thay đổi mật khẩu ngay lập tức", "Chờ đợi hệ thống tự khôi phục", "Chia sẻ câu chuyện lên mạng xã hội để cảnh báo"], correct: 1 },
+        { question: "Phần mềm diệt virus (Antivirus) có vai trò chính là gì?", options: ["Tăng tốc độ máy tính", "Ngăn chặn trang web lừa đảo", "Phát hiện, ngăn chặn và loại bỏ phần mềm độc hại (Malware)", "Mã hóa dữ liệu cá nhân"], correct: 2 },
+        { question: "Khi dùng Wi-Fi công cộng (quán cà phê, sân bay), hành động nào là KHÔNG an toàn?", options: ["Sử dụng HTTPS", "Chỉ xem tin tức", "Sử dụng VPN (Mạng riêng ảo)", "Thực hiện giao dịch ngân hàng hoặc đăng nhập email"], correct: 3 },
+        { question: "Mục đích của việc cập nhật phần mềm (Update) định kỳ là gì?", options: ["Thay đổi giao diện", "Thêm tính năng mới", "Khắc phục lỗi bảo mật và lỗ hổng (Vulnerability)", "Giảm dung lượng bộ nhớ"], correct: 2 },
+        { question: "Loại mật khẩu nào dưới đây là MẠNH nhất?", options: ["NguyenVanA123", "matkhaucuaban", "A12345678", "TrangChu#3aB^9x!@"], correct: 3 },
+        { question: "Phím tắt thông dụng để khóa máy tính (Windows/Mac) khi bạn rời khỏi bàn làm việc là gì?", options: ["Ctrl + Alt + Del", "Alt + F4", "Windows/Cmd + L", "F5"], correct: 2 },
+        { question: "Điều gì nên làm với các file đính kèm lạ hoặc không mong muốn từ email không rõ nguồn gốc?", options: ["Mở ngay để kiểm tra nội dung", "Tải về và dùng phần mềm diệt virus quét", "Xóa email ngay lập tức mà không mở", "Chuyển tiếp cho bạn bè hỏi ý kiến"], correct: 2 },
+        { question: "Loại tấn công nào lợi dụng tâm lý sợ hãi, tham lam hoặc tin tưởng để lừa người dùng?", options: ["DDoS", "Brute Force", "Social Engineering (Kỹ thuật Xã hội)", "Zero-day"], correct: 2 },
+        { question: "Nếu trình duyệt báo 'Kết nối không an toàn' (Not Secure), bạn nên làm gì?", options: ["Bỏ qua và tiếp tục truy cập", "Tìm phiên bản HTTPS hoặc thoát khỏi trang web", "Gửi phản hồi cho quản trị viên", "Cài lại trình duyệt"], correct: 1 },
+    ],
+};
+
+// Tổng hợp tất cả câu hỏi trắc nghiệm
+const allQuizQuestions = [
+    ...quizData.cpp,
+    ...quizData.python,
+    ...quizData.java,
+    ...quizData.programming,
+    ...quizData.cybersecurity
+];

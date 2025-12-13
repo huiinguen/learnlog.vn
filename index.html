@@ -1,76 +1,115 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trắc Nghiệm</title>
+    <title>Thi Chứng Chỉ Kỹ Thuật</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/trangchu.css">
+    <link rel="stylesheet" href="css/game.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <link rel="stylesheet" href="css/chatbox.css">
 </head>
+
 <body>
 
-<nav class="dock-nav" id="dockNav">
-    <a href="index.html" title="Gameshow"><i class="fas fa-gamepad"></i><span class="tooltip">Gameshow</span></a>
-    <a href="sanpham.html" title="Sản Phẩm"><i class="fas fa-box-archive"></i><span class="tooltip">Sản Phẩm</span></a>
-    <a href="tienich.html" title="Tiện Ích"><i class="fas fa-tools"></i><span class="tooltip">Tiện Ích</span></a>
-    <a href="ghichu.html" title="Ghi Chú"><i class="fas fa-sticky-note"></i><span class="tooltip">Ghi Chú</span></a>
-</nav>
+    <nav class="dock-nav" id="dockNav">
+        <a href="index.html" title="Gameshow"><i class="fas fa-gamepad"></i><span class="tooltip">Gameshow</span></a>
+        <a href="sanpham.html" title="Sản Phẩm"><i class="fas fa-box-archive"></i><span class="tooltip">Sản
+                Phẩm</span></a>
+        <a href="ghichu.html" title="Ghi Chú"><i class="fas fa-sticky-note"></i><span class="tooltip">Ghi Chú</span></a>
+    </nav>
 
     <main id="mainContent">
         <section class="content-section animate-section from-left">
             <div class="container">
-                <h2 class="section-title">Game Trắc Nghiệm</h2>
-                <!-- CHỌN CHỦ ĐỀ -->
-                <div class="quiz-setup">
-                    <select id="topicSelect">
-                        <option value="">-- Chọn chủ đề --</option>
-                        <option value="programming">Lập Trình</option>
-                        <option value="excel">Excel</option>
-                        <option value="cybersecurity">An Ninh Mạng</option>
-                        <option value="random">Ngẫu Nhiên (Tất cả)</option>
-                        <option value="fillblank">Điền Từ Thiếu</option>
+
+                <div id="mainSetup" class="quiz-setup exam-mode">
+                    <h3>CHẾ ĐỘ THI CHỨNG CHỈ</h3>
+                    <p class="exam-info">Bài thi: <strong id="examQuestionCount">30</strong> câu / Thời gian: <strong
+                            id="examTimeLimit">20</strong> phút. Đạt 70% để nhận Bằng Khen Cấp độ B!</p>
+
+                    <select id="examTopicSelect">
+                        <option value="">-- Chọn loại chứng chỉ --</option>
+                        <option value="exam_all">Chứng chỉ Kỹ thuật Tổng hợp (Tất cả)</option>
+                        <option value="exam_programming">Chứng chỉ Lập trình Tổng hợp (C++, Python, Java)</option>
+                        <option value="exam_cpp">Chứng chỉ C++</option>
+                        <option value="exam_python">Chứng chỉ Python</option>
+                        <option value="exam_java">Chứng chỉ Java</option>
+                        <option value="exam_cybersecurity">Chứng chỉ An Ninh Mạng Bình Dân</option>
                     </select>
-                    <button id="startQuizBtn" class="cta-button">Bắt Đầu Ngay!</button>
+
+                    <button id="startExamBtn" class="cta-button neon-btn exam-btn">Bắt Đầu Thi <i
+                            class="fas fa-certificate"></i></button>
                 </div>
 
-            <div id="fillBlankInputContainer" style="display:none;">
-                <input type="text" id="fillBlankInput" placeholder="Nhập chính xác cụm từ còn thiếu..." class="fillblank-input"
-                    autocomplete="off">
-                <button id="submitFillBlankBtn" class="cta-button">Gửi Đáp Án</button>
-            </div>
-
-                <!-- KHU VỰC CHƠI -->
                 <div id="quizContainer" style="display:none;">
-                    <div class="progress-bar"><div id="progressFill"></div></div>
-                    <div class="question-number">Câu <span id="currentQ">1</span>/<span id="totalQ">10</span></div>
+                    <div id="timerDisplay" class="timer-display" style="display:none;"></div>
+                    <div class="progress-bar">
+                        <div id="progressFill"></div>
+                    </div>
+                    <div class="question-number">Câu <span id="currentQ">1</span>/<span id="totalQ">30</span></div>
                     <h3 id="questionText"></h3>
                     <div id="optionsContainer"></div>
                     <button id="nextQuestionBtn" class="cta-button" style="display:none;">Tiếp Theo</button>
-                    <button id="quitQuizBtn" class="cta-button quit-btn">Rời Game</button>
-                    </div>
+                </div>
 
-                <!-- TỔNG KẾT -->
                 <div id="quizSummary" class="modal" style="display:none;">
                     <div class="modal-content">
                         <div class="neon-border"></div>
                         <div class="game-over-title" id="resultTitle">HOÀN THÀNH!</div>
-                        <div class="score-display"><span id="scoreText">Đúng 10/10</span></div>
+                        <div class="score-display"><span id="scoreText">Đúng 30/30</span></div>
+
+                        <div id="resultDetails" class="result-details">
+                        </div>
+
                         <div class="reward-medals" id="rewardText"></div>
                         <div class="stats-grid">
                             <div><i class="fas fa-stopwatch"></i> Thời gian: <span id="timeTaken">0:00</span></div>
                             <div><i class="fas fa-trophy"></i> Rank: <span id="rankText">S</span></div>
-                            <div><i class="fas fa-bolt"></i> Combo x<span id="comboText">10</span></div>
+                            <div><i class="fas fa-bolt"></i> Đúng: <span id="comboText">30</span> câu</div>
                         </div>
+
+                        <button id="downloadCertBtn" class="cta-button download-btn" style="display:none;"><i
+                                class="fas fa-download"></i> Tải Bằng Khen (PNG)</button>
                         <div id="confetti"></div>
-                        <button id="restartQuizBtn" class="cta-button neon-btn">Chơi Lại</button>
+                        <button id="restartQuizBtn" class="cta-button neon-btn">Thi Lại</button>
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
+    <div id="chatboxContainer" class="chatbox-container">
+        <button id="chatboxToggle" class="chatbox-toggle">
+            <i class="fas fa-comment-dots"></i>
+            <span class="chatbox-badge" id="chatboxBadge">1</span>
+        </button>
+
+        <div id="chatboxWindow" class="chatbox-window" style="display: none;">
+            <div class="chatbox-header">
+                <h4>Chat GỜ BÊ TÊ</h4>
+                <i class="fas fa-times close-btn" id="chatboxClose"></i>
+            </div>
+            <div class="chatbox-messages" id="chatboxMessages">
+                <div class="message bot-message">
+                    <p>Chào bạn! Tôi có thể giúp gì cho bạn về các chứng chỉ, sản phẩm, hay ghi chú code?</p>
+                </div>
+            </div>
+            <div id="chatboxSuggestions" class="chatbox-suggestions">
+            </div>
+            <div class="chatbox-input-area">
+                <input type="text" id="chatboxInput" placeholder="Nhập câu hỏi...">
+                <button id="chatboxSend"><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </div>
     <script src="js/main.js"></script>
-    <script src="js/trangchu.js"></script>
+    <script src="js/game/quiz-data.js"></script>
+    <script src="js/game/game-logic.js"></script>
+    <script src="js/chatbox/chatbox-data.js"></script>
+    <script src="js/chatbox/chatbox-logic.js"></script>
 </body>
+
 </html>

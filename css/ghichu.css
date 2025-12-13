@@ -11,17 +11,132 @@ body {
     padding-bottom: 100px; /* Chừa chỗ cho Dock */
 }
 
+/* Ẩn hoặc tối ưu tiêu đề (đã xóa trong HTML, giữ style nếu muốn dùng lại) */
 .page-title {
-    text-align: center;
-    font-size: 2.5em;
-    margin: 30px 0 40px 0;
-    color: #bb86fc;
-    text-shadow: 0 0 15px rgba(187, 134, 252, 0.3);
-    text-transform: uppercase;
-    letter-spacing: 2px;
+    display: none; /* Đã xóa khỏi HTML, style này chỉ là dự phòng */
 }
 
-/* 2. Grid layout cho các thẻ ghi chú */
+/* === 2. Search & Controls Styling === */
+.search-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    margin: 20px auto 30px auto;
+    padding: 0 10px;
+    max-width: 1000px; /* Giới hạn độ rộng như container */
+}
+
+.search-box {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    background: #1e1e38;
+    border: 1px solid #2a2a4e;
+    border-radius: 8px;
+    padding: 8px 15px;
+}
+
+.search-box i {
+    color: #bb86fc;
+    margin-right: 10px;
+}
+
+#searchInput {
+    background: none;
+    border: none;
+    color: #e0d6ff;
+    padding: 0;
+    font-size: 1em;
+    width: 100%;
+    outline: none;
+}
+
+#searchInput::placeholder {
+    color: #8c78a6;
+}
+
+#categorySelect {
+    padding: 10px 15px;
+    background: #1e1e38;
+    border: 1px solid #bb86fc;
+    color: #00ff9d; /* Màu chữ neon */
+    border-radius: 8px;
+    font-size: 1em;
+    cursor: pointer;
+    outline: none;
+    appearance: none; /* Ẩn mũi tên mặc định */
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2300ff9d' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 14px;
+    padding-right: 30px; /* Để trống cho icon tùy chỉnh */
+}
+
+#categorySelect option {
+    background: #1a1a2e;
+    color: #e0d6ff;
+}
+
+@media (max-width: 600px) {
+    .search-controls {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 15px;
+    }
+    #categorySelect {
+        width: 100%;
+    }
+}
+/* === Kết thúc Search & Controls Styling === */
+
+/* === 2.5. Sub-Category Tabs Styling (Tab con) === */
+.sub-category-tabs {
+    display: flex; /* Mặc định là none trong JS, flex khi có category được chọn */
+    justify-content: center;
+    gap: 10px;
+    margin: 0px auto 30px auto;
+    padding: 0 10px;
+    max-width: 1000px; 
+    flex-wrap: wrap; /* Cho phép xuống dòng nếu nhiều tab */
+}
+
+.sub-tab {
+    padding: 8px 15px;
+    border: 1px solid #3a3a5e;
+    border-radius: 20px;
+    background: #1e1e38;
+    color: #e0d6ff;
+    font-size: 0.9em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    outline: none;
+    user-select: none;
+}
+
+.sub-tab:hover {
+    border-color: #bb86fc;
+    color: #bb86fc;
+}
+
+.sub-tab.active {
+    background: linear-gradient(45deg, #bb86fc, #00ff9d); /* Màu neon nổi bật */
+    color: #0f0f1e; 
+    border-color: #bb86fc;
+    font-weight: bold;
+    box-shadow: 0 0 10px rgba(0, 255, 157, 0.5);
+}
+
+@media (max-width: 600px) {
+    .sub-category-tabs {
+        justify-content: start;
+        overflow-x: auto; /* Cho phép cuộn ngang */
+        padding-bottom: 5px;
+    }
+}
+/* === Kết thúc Sub-Category Tabs Styling === */
+
+/* 3. Grid layout cho các thẻ ghi chú */
 .note-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -29,7 +144,7 @@ body {
     padding: 0 10px;
 }
 
-/* 3. Thẻ ghi chú (Note Card) */
+/* 4. Thẻ ghi chú (Note Card) */
 .note-card {
     background: #1e1e38; /* Tím than đậm */
     border: 1px solid #2a2a4e;
@@ -57,19 +172,14 @@ body {
     background: linear-gradient(to bottom, #bb86fc, #00ff9d);
 }
 
-/* 4. Phần tiêu đề (Header) */
+/* 5. Phần tiêu đề (Header) */
 .note-header {
     padding: 15px 20px;
     background: rgba(255, 255, 255, 0.03);
     border-bottom: 1px solid #2a2a4e;
     display: flex;
     align-items: center;
-    gap: 12px;
-}
-
-.note-header i {
-    font-size: 1.5em;
-    color: #00ff9d; /* Icon màu xanh neon */
+    gap: 0; 
 }
 
 .note-header h3 {
@@ -79,7 +189,7 @@ body {
     font-weight: 600;
 }
 
-/* 5. Phần nội dung (Body) */
+/* 6. Phần nội dung (Body) */
 .note-body {
     padding: 20px;
 }
@@ -91,7 +201,7 @@ body {
     color: #d1c4e9; /* Tím nhạt */
 }
 
-/* 6. Block Note/Cảnh báo */
+/* 7. Block Note/Cảnh báo */
 .note-warning, .note-info {
     padding: 10px 15px;
     border-radius: 8px;
@@ -116,7 +226,7 @@ body {
     color: #e0aaff;
 }
 
-/* 7. Block Code (Giao diện giống Editor) */
+/* 8. Block Code (Giao diện giống Editor) */
 .code-snippet {
     background: #0f0f1e; /* Đen gần tuyệt đối */
     border-radius: 8px;
@@ -133,6 +243,9 @@ body {
     text-transform: uppercase;
     letter-spacing: 1px;
     border-bottom: 1px solid #333;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .code-snippet pre {
@@ -146,25 +259,6 @@ body {
     color: #00ff9d; /* Màu code xanh neon */
     font-size: 0.95em;
     line-height: 1.5;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-    .page-title {
-        font-size: 1.8em;
-    }
-    .note-grid {
-        grid-template-columns: 1fr; /* 1 cột trên mobile */
-    }
-}
-/* Thêm vào cuối file css/ghichu.css */
-
-/* Chỉnh lại header của block code để chứa nút copy */
-.code-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 5px 15px;
 }
 
 /* Style nút copy */
@@ -193,4 +287,11 @@ body {
 
 .animate-fade-in {
     animation: fadeIn 0.5s ease forwards;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .note-grid {
+        grid-template-columns: 1fr; /* 1 cột trên mobile */
+    }
 }

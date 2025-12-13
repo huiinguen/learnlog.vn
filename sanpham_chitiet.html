@@ -8,11 +8,11 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/sanpham_chitiet.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/chatbox.css">
 </head>
 <nav class="dock-nav" id="dockNav">
     <a href="index.html" title="Gameshow"><i class="fas fa-gamepad"></i><span class="tooltip">Gameshow</span></a>
     <a href="sanpham.html" title="Sản Phẩm"><i class="fas fa-box-archive"></i><span class="tooltip">Sản Phẩm</span></a>
-    <a href="tienich.html" title="Tiện Ích"><i class="fas fa-tools"></i><span class="tooltip">Tiện Ích</span></a>
     <a href="ghichu.html" title="Ghi Chú"><i class="fas fa-sticky-note"></i><span class="tooltip">Ghi Chú</span></a>
 </nav>
 
@@ -26,9 +26,35 @@
                 </div>
             </div>
         </main>
-        <script src="js/product_data.js"></script>
-        <script src="js/giohang.js"></script>
-        <script src="js/sanpham_chitiet.js"></script>
+
+        <div id="chatboxContainer" class="chatbox-container">
+            <button id="chatboxToggle" class="chatbox-toggle">
+                <i class="fas fa-comment-dots"></i>
+                <span class="chatbox-badge" id="chatboxBadge">1</span>
+            </button>
+
+            <div id="chatboxWindow" class="chatbox-window" style="display: none;">
+                <div class="chatbox-header">
+                    <h4>Chat GỜ BÊ TÊ</h4>
+                    <i class="fas fa-times close-btn" id="chatboxClose"></i>
+                </div>
+                <div class="chatbox-messages" id="chatboxMessages">
+                    <div class="message bot-message">
+                        <p>Chào bạn! Tôi có thể giúp gì cho bạn về các chứng chỉ, sản phẩm, hay ghi chú code?</p>
+                    </div>
+                </div>
+                <div id="chatboxSuggestions" class="chatbox-suggestions">
+                </div>
+                <div class="chatbox-input-area">
+                    <input type="text" id="chatboxInput" placeholder="Nhập câu hỏi...">
+                    <button id="chatboxSend"><i class="fas fa-paper-plane"></i></button>
+                </div>
+            </div>
+        </div>
+        <script src="js/product/product_data.js"></script>
+        <script src="js/product/sanpham_chitiet.js"></script>
+        <script src="js/chatbox/chatbox-data.js"></script>
+        <script src="js/chatbox/chatbox-logic.js"></script>
 </body>
 
 </html>
