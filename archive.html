@@ -2,6 +2,7 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kho Lưu Trữ - My Notes</title>
     <link rel="stylesheet" href="css/note/ghichu.css">
     <link rel="stylesheet" href="css/note/archive.css">
@@ -11,9 +12,23 @@
 <body>
     <div class="archive-container">
         <header class="archive-header">
-            <a href="ghichu.html" class="back-btn"><i class="fas fa-arrow-left"></i> Quay lại</a>
-            <h1><i class="fas fa-bookmark"></i> Ghi chú đã lưu trữ</h1>
-            <button onclick="exportPDF()" class="action-btn pdf-btn">Xuất PDF nội dung</button>
+            <div class="header-left">
+                <a href="ghichu.html" class="back-btn"><i class="fas fa-arrow-left"></i> Quay lại</a>
+                <h1><i class="fas fa-bookmark"></i> Ghi chú đã lưu</h1>
+            </div>
+            
+            <div class="sync-group">
+                <button onclick="exportArchivePDF()" class="action-btn pdf-btn" title="Xuất PDF">
+                    <i class="fas fa-file-pdf"></i> PDF
+                </button>
+                <button onclick="downloadBackup()" class="action-btn backup-btn" title="Tải file .json">
+                    <i class="fas fa-download"></i> Sao lưu
+                </button>
+                <input type="file" id="importFile" style="display:none" onchange="importBackup(event)">
+                <button onclick="document.getElementById('importFile').click()" class="action-btn sync-btn" title="Nhập file .json">
+                    <i class="fas fa-sync-alt"></i> Đồng bộ
+                </button>
+            </div>
         </header>
         
         <div id="archiveGrid" class="note-grid">

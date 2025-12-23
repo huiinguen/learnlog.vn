@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kỉ Niệm - Ghost Code</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/vlog.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+    <div class="desktop-decor">
+        <span class="decor-text top-right">MOMENTS</span>
+        <span class="decor-text bottom-left">CREATIVE</span>
+    </div>
+
+    <aside class="personal-sidebar">
+        <div class="profile-card-static">
+            <div class="avatar-box">
+                <i class="fas fa-user-ninja"></i>
+            </div>
+            <h1 class="nickname">@Ghost_Code</h1>
+            <div class="hobbies-box">
+                <span>#LocketStyle</span> <span>#Memories</span>
+            </div>
+        </div>
+
+        <div class="vlog-categories">
+            <button class="cat-btn active" onclick="openArchive('all')">
+                <i class="fas fa-heart"></i> Kỉ niệm của tôi
+            </button>
+        </div>
+    </aside>
+
+    <div id="vlogArchive" class="archive-overlay" style="display: block;">
+        <div class="archive-container">
+            <div id="vlogGrid" class="locket-grid">
+                </div>
+        </div>
+    </div>
+
+    <div id="detailModal" class="detail-modal" onclick="closeDetail()">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <img id="detailImg" src="" alt="">
+            <div class="detail-info">
+                <h3 id="detailTitle"></h3>
+                <p id="detailCaption"></p>
+                <span id="detailDate"></span>
+            </div>
+        </div>
+    </div>
+
+    <nav class="dock-nav" id="dockNav">
+        <a href="index.html"><i class="fas fa-gamepad"></i></a>
+        <a href="sanpham.html"><i class="fas fa-box-archive"></i></a>
+        <a href="ghichu.html"><i class="fas fa-sticky-note"></i></a>
+        <a href="vlog.html" class="active"><i class="fas fa-camera"></i></a>
+    </nav>
+
+    <script src="js/vlog/vlog_data.js"></script>
+    <script src="js/vlog/vlog_logic.js"></script>
+</body>
+</html>

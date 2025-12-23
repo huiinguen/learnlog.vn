@@ -152,7 +152,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Nút Copy link
     actionSectionHtml += `
       <button class="cta-button copy-link-btn">
-        <i class="fas fa-link"></i> Copy Link
+        <i class="fas fa-link"></i> Copy sản phẩm
       </button>`;
 
     if (prod.price > 0) {
@@ -170,6 +170,10 @@ document.addEventListener("DOMContentLoaded", function () {
           </a>`;
       }
     }
+    actionSectionHtml += `
+          <button class="cta-button copy-resource-btn" data-link="${prod.resourceLink}">
+            <i class="fas fa-link"></i> Copy Link Đích
+          </button>`;
     actionSectionHtml += `</div>`;
 
     // ----- HTML chính -----
@@ -220,6 +224,19 @@ document.addEventListener("DOMContentLoaded", function () {
           }, 2000);
         }).catch(() => {
           showToast("Copy thất bại, vui lòng thử lại.");
+        });
+      });
+    }
+    const copyResourceBtn = document.querySelector(".copy-resource-btn");
+    if (copyResourceBtn) {
+      copyResourceBtn.addEventListener("click", () => {
+        const link = copyResourceBtn.getAttribute("data-link");
+        navigator.clipboard.writeText(link).then(() => {
+          showToast("Đã copy link đích thành công!");
+          copyResourceBtn.innerHTML = '<i class="fas fa-check"></i> Đã copy link!';
+          setTimeout(() => {
+            copyResourceBtn.innerHTML = '<i class="fas fa-link"></i> Copy Link Đích';
+          }, 2000);
         });
       });
     }

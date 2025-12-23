@@ -323,3 +323,77 @@ code { font-family: 'Consolas', monospace; color: #00ff9d; font-size: 0.9em; }
         justify-content: center;
     }
 }
+/* Tùy chỉnh nhóm nút điều hướng phụ */
+.sync-group {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+/* Nút Kho lưu trữ - Phong cách Neon Purple */
+.fav-toggle-btn {
+    position: relative;
+    background: rgba(187, 134, 252, 0.1); /* Màu tím nhạt trong suốt */
+    color: #bb86fc;
+    border: 1px solid #bb86fc;
+    padding: 10px 20px;
+    border-radius: 12px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 4px 15px rgba(187, 134, 252, 0.1);
+}
+
+/* Hiệu ứng khi di chuột (Hover) */
+.fav-toggle-btn:hover {
+    background: #bb86fc;
+    color: #1a1a2e; /* Đổi màu chữ sang tối để tương phản */
+    box-shadow: 0 0 20px rgba(187, 134, 252, 0.4);
+    transform: translateY(-2px);
+}
+
+/* Hiệu ứng Icon bên trong */
+.fav-toggle-btn i {
+    font-size: 1.1em;
+    transition: transform 0.3s ease;
+}
+
+.fav-toggle-btn:hover i {
+    transform: scale(1.2) rotate(-10deg);
+}
+
+/* Badge số lượng ghi chú (favCount) */
+#favCount {
+    background: #ff4081; /* Màu hồng neon để nổi bật trên nền tím */
+    color: white;
+    padding: 2px 8px;
+    border-radius: 8px;
+    font-size: 0.85em;
+    font-weight: bold;
+    margin-left: 4px;
+    box-shadow: 0 2px 5px rgba(255, 64, 129, 0.3);
+}
+
+/* Hiệu ứng nhấp nháy nhẹ cho Badge khi có ghi chú mới */
+@keyframes pulse-badge {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+#favCount:not(:empty) {
+    animation: pulse-badge 2s infinite;
+}
+
+/* Responsive cho mobile */
+@media (max-width: 600px) {
+    .fav-toggle-btn {
+        width: 100%;
+        justify-content: center;
+        padding: 12px;
+    }
+}

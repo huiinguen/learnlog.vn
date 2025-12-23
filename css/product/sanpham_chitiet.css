@@ -189,6 +189,7 @@ body {
     border-top: 1px solid #2a2a4e;
 }
 
+/* Tìm đoạn này trong sanpham_chitiet.css và cập nhật */
 .cta-button {
     display: inline-flex;
     align-items: center;
@@ -205,7 +206,7 @@ body {
     
     /* Neon Gradient */
     background: linear-gradient(135deg, #bb86fc, #9e86ff);
-    color: #0f0f1e;
+    color: #0f0f1e !important; /* Thêm !important để không bị ghi đè bởi nav a */
     box-shadow: 0 4px 15px rgba(187, 134, 252, 0.4);
 }
 

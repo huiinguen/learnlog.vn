@@ -7,14 +7,13 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/note/ghichu.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
 <body>
     <nav class="dock-nav" id="dockNav">
         <a href="index.html" title="Gameshow"><i class="fas fa-gamepad"></i><span class="tooltip">Gameshow</span></a>
         <a href="sanpham.html" title="Sản Phẩm"><i class="fas fa-box-archive"></i><span class="tooltip">Sản Phẩm</span></a>
         <a href="ghichu.html" title="Ghi Chú" class="active"><i class="fas fa-sticky-note"></i><span class="tooltip">Ghi Chú</span></a>
-        <a href="huongdan.html" title="Hướng Dẫn"><i class="fas fa-info-circle"></i><span class="tooltip">Hướng Dẫn</span></a>
+        <a href="vlog.html" title="Vlog" class="active"><i class="fas fa-video"></i><span class="tooltip">Vlog</span></a>
     </nav>
 
     <main class="main-layout">
@@ -31,32 +30,16 @@
                     <a href="archive.html" class="action-btn fav-toggle-btn" style="text-decoration: none;">
                         <i class="fas fa-bookmark"></i> Kho lưu trữ (<span id="favCount">0</span>)
                     </a>
-
-                    <button onclick="exportPurePDF()" class="action-btn pdf-btn" title="Xuất PDF nội dung">
-                        <i class="fas fa-file-pdf"></i> PDF
-                    </button>
-
-                    <button onclick="downloadBackup()" class="action-btn backup-btn" title="Tải file sao lưu .json">
-                        <i class="fas fa-download"></i> Sao lưu
-                    </button>
-
-                    <input type="file" id="importFile" style="display:none" onchange="importBackup(event)">
-                    <button onclick="document.getElementById('importFile').click()" class="action-btn sync-btn" title="Đồng bộ từ file .json">
-                        <i class="fas fa-sync-alt"></i> Đồng bộ
-                    </button>
                 </div>
             </div>
 
             <div class="content-wrapper">
-                <div id="noteGrid" class="note-grid">
-                    </div>
+                <div id="noteGrid" class="note-grid"></div>
             </div>
         </div>
     </main>
 
     <script src="js/note/ghichu-data.js"></script> 
     <script src="js/note/ghichu.js"></script> 
-    <script src="js/chatbox/chatbox-injector.js"></script> 
-
 </body>
 </html>

@@ -4,13 +4,60 @@
     padding: 20px;
 }
 
+/* Header linh hoạt hơn trên mobile */
 .archive-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
     border-bottom: 1px solid #bb86fc;
     padding-bottom: 20px;
+    flex-wrap: wrap; /* Cho phép rớt dòng khi màn hình quá hẹp */
+    gap: 15px;
+}
+
+.archive-header h1 {
+    color: #fff;
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+@media (max-width: 600px) {
+    .archive-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .archive-header h1 {
+        font-size: 1.2rem;
+        order: -1; /* Đưa tiêu đề lên đầu */
+    }
+
+    .action-btn.pdf-btn {
+        width: 100%; /* Nút PDF to hơn dễ bấm */
+        justify-content: center;
+        padding: 12px;
+    }
+
+    /* Tăng kích thước chữ cho nội dung dễ đọc trên mobile */
+    .note-header h3 {
+        font-size: 1rem;
+    }
+
+    .answer {
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+
+    pre code {
+        font-size: 0.85rem;
+    }
+}
+
+/* Đảm bảo thẻ code không bị tràn màn hình */
+.code-snippet pre {
+    white-space: pre-wrap;
+    word-break: break-all;
 }
 
 .back-btn {
@@ -22,3 +69,77 @@
 .back-btn:hover { text-decoration: underline; }
 
 h1 { color: #fff; margin: 0; font-size: 1.5rem; }
+/* Tối ưu Header */
+.archive-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #bb86fc;
+    padding-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.sync-group {
+    display: flex;
+    gap: 10px;
+}
+
+/* Style cho các nút action */
+.action-btn {
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    border: none;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: 0.3s ease;
+}
+
+.backup-btn {
+    background: rgba(0, 255, 157, 0.1) !important;
+    color: #00ff9d !important;
+    border: 1px solid #00ff9d !important;
+}
+
+.sync-btn {
+    background: rgba(0, 188, 212, 0.1) !important;
+    color: #00bcd4 !important;
+    border: 1px solid #00bcd4 !important;
+}
+
+.pdf-btn {
+    background: rgba(255, 82, 82, 0.1) !important;
+    color: #ff5252 !important;
+    border: 1px solid #ff5252 !important;
+}
+
+.action-btn:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.2);
+}
+
+@media (max-width: 600px) {
+    .archive-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .sync-group {
+        width: 100%;
+        justify-content: space-between;
+    }
+    .sync-group .action-btn {
+        flex: 1;
+        justify-content: center;
+        font-size: 0.8rem;
+    }
+}
