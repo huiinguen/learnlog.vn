@@ -397,3 +397,70 @@ code { font-family: 'Consolas', monospace; color: #00ff9d; font-size: 0.9em; }
         padding: 12px;
     }
 }
+/* Style cho ô tổng số ghi chú */
+.total-badge {
+    background: rgba(0, 255, 157, 0.1);
+    color: #00ff9d;
+    padding: 8px 15px;
+    border-radius: 10px;
+    border: 1px solid #00ff9d;
+    font-size: 0.9em;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+}
+
+/* Đảm bảo menu con có style giống menu chính */
+#subCategorySelect {
+    padding: 10px 15px;
+    background: #1e1e38;
+    border: 1px solid #3a3a5e;
+    color: #bb86fc; /* Màu khác một chút để phân biệt */
+    border-radius: 8px;
+    cursor: pointer;
+    outline: none;
+}
+
+/* Loại bỏ hoàn toàn hiển thị difficulty nếu còn sót */
+.diff-tag, #difficultySelect {
+    display: none !important;
+}
+/* Chỉ giữ container định vị cho code snippet */
+.code-snippet {
+    position: relative;
+}
+
+/* Nút Copy cho Code */
+.copy-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: rgba(187, 134, 252, 0.1);
+    color: #bb86fc;
+    border: 1px solid rgba(187, 134, 252, 0.3);
+    padding: 5px 10px;
+    border-radius: 6px;
+    font-size: 0.85em;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    z-index: 5;
+}
+
+.copy-btn:hover {
+    background: #bb86fc;
+    color: #1a1a2e;
+}
+
+/* Trả lại padding tự nhiên cho phần câu trả lời */
+.answer {
+    padding-right: 0; 
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+/* Đảm bảo code không bị đè */
+pre {
+    padding-top: 40px !important;
+}

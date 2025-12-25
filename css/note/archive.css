@@ -6,6 +6,7 @@
 
 /* Header linh hoạt hơn trên mobile */
 .archive-header {
+    background: transparent !important; /* Xóa nền trắng từ style.css */
     display: flex;
     justify-content: space-between;
     align-items: center;

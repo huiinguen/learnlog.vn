@@ -498,3 +498,155 @@ body {
 }
 .sig-line { border-top: 1px solid #333; width: 150px; margin-bottom: 5px; }
 .cert-decoration { font-size: 50px; color: #ff9800; margin: 10px 0; }
+
+/* =========================================
+   THIẾT KẾ BẰNG KHEN MỚI (Minimalist Modern)
+   ========================================= */
+
+.cert-canvas {
+    /* Kích thước cố định để xuất ảnh đẹp (tỷ lệ gần giống A4 ngang) */
+    width: 1000px; 
+    height: 700px;
+    background-color: #ffffff;
+    padding: 60px;
+    box-sizing: border-box;
+    /* Sử dụng font hiện đại đã thêm ở index.html */
+    font-family: 'Montserrat', sans-serif;
+    color: #1a1a1a; /* Màu đen không quá gắt */
+    text-align: center;
+    position: relative;
+    /* Viền mỏng tinh tế thay vì viền dày cục mịch */
+    border: 1px solid #e0e0e0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Đường trang trí trên dưới tạo điểm nhấn tối giản */
+.cert-decorative-line {
+    height: 4px;
+    background: #1a1a1a;
+    width: 60px;
+    margin: 0 auto;
+}
+
+.cert-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Tiêu đề chính */
+.cert-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: 4px; /* Giãn khoảng cách chữ cho sang trọng */
+    text-transform: uppercase;
+    margin-bottom: 40px;
+    color: #000;
+}
+
+.cert-subtitle, .cert-text {
+    font-size: 1.2rem;
+    color: #555; /* Màu xám đậm cho các dòng phụ */
+    margin: 10px 0;
+    font-weight: 400;
+}
+
+/* Tên người nhận - Phần quan trọng nhất */
+.recipient-name {
+    font-size: 3.8rem;
+    font-weight: 800;
+    margin: 30px 0;
+    text-transform: uppercase;
+    color: #000;
+    line-height: 1.2;
+}
+
+/* Tên môn thi/chứng chỉ */
+.subject-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #000;
+    margin: 20px 0 40px 0;
+    text-transform: uppercase;
+}
+
+/* Hộp chứa thông tin chi tiết (Xếp loại/Điểm) */
+.cert-details-box {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #f9f9f9; /* Nền xám rất nhạt để làm nổi bật */
+    padding: 15px 40px;
+    border-radius: 50px; /* Bo tròn hiện đại */
+    margin: 0 auto;
+}
+
+.detail-item {
+    display: flex;
+    flex-direction: column;
+    padding: 0 20px;
+}
+
+.detail-label {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #888;
+    margin-bottom: 5px;
+}
+
+.detail-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #000;
+}
+
+/* Đường gạch đứng ngăn cách */
+.detail-separator {
+    width: 1px;
+    height: 40px;
+    background: #ddd;
+}
+
+/* Phần chân trang */
+.cert-footer {
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 40px;
+    text-align: left;
+}
+
+.signature-section {
+    text-align: center;
+}
+
+/* Giả lập chữ ký bằng font viết tay có sẵn của hệ thống */
+.faux-signature {
+    font-family: 'Brush Script MT', cursive; 
+    font-size: 2.2rem;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.footer-label {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #888;
+    border-top: 1px solid #eee;
+    padding-top: 10px;
+    display: inline-block;
+    min-width: 150px;
+    text-align: center;
+}
+
+#certDate {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: #333;
+}
