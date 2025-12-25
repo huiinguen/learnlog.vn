@@ -4,8 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kỉ Niệm - Ghost Code</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/vlog.css">
+    
+    <link rel="stylesheet" href="css/style.css"> <link rel="stylesheet" href="css/vlog/vlog_main.css"> 
+    <link rel="stylesheet" href="css/vlog/locket_mode.css">
+    <link rel="stylesheet" href="css/vlog/insta_mode.css">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="css/chatbox.css">
 </head>
@@ -20,45 +23,65 @@
             <div class="avatar-box">
                 <i class="fas fa-user-ninja"></i>
             </div>
-            <h1 class="nickname">@Trùm tạo bug</h1>
-            <div class="hobbies-box">
-                <span>#Hiking_Trekking</span> <span>#Phượt_thủ</span><span>#Music</span>
+            <h1 class="nickname">@ERROR⚠️</h1>
+            
+            <div class="stats-container">
+                <div class="stat-item">
+                    <span id="locketCount">0</span>
+                    <p>Locket</p>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <span id="instaCount">0</span>
+                    <p>Posts</p>
+                </div>
             </div>
-            <p class="bio">"Chill cùng tớ"</p>
+
+            <div class="hobbies-box">
+                <span>#Hiking</span> <span>#Code</span> <span>#Chill</span>
+            </div>
         </div>
         
         <div class="vlog-categories">
-            <div class="cat-label"><i class="fas fa-heart"></i> BỘ SƯU TẬP KỈ NIỆM</div>
+            <div class="cat-label"><i class="fas fa-layer-group"></i> CHẾ ĐỘ HIỂN THỊ</div>
+            <div class="mode-switcher-grid">
+                <button class="mode-btn" id="btn-locket" onclick="switchMode('locket')">
+                    <i class="fas fa-th-large"></i> Locket
+                </button>
+                <button class="mode-btn" id="btn-insta" onclick="switchMode('post')">
+                    <i class="fas fa-square-rss"></i> Insta
+                </button>
+            </div>
         </div>
     </aside>
 
     <main class="archive-overlay">
-        <div class="archive-container">
-            <div id="vlogGrid" class="locket-grid"></div>
-        </div>
+        <div id="vlogContainer">
+            </div>
     </main>
 
     <div id="detailModal" class="detail-modal" onclick="closeVlogDetail()">
-        <div class="modal-content" onclick="event.stopPropagation()">
-            <div id="modalMediaContainer"></div>
-            <div class="detail-info">
-                <h3 id="detailTitle"></h3>
-                <p id="detailCaption"></p>
-                <span id="detailDate"></span>
+        <button class="close-modal-btn" onclick="closeVlogDetail()">&times;</button>
+        
+        <div class="modal-feed-container" id="modalFeedContainer" onclick="event.stopPropagation()">
             </div>
-            <button class="close-modal-btn" onclick="closeVlogDetail()">&times;</button>
-        </div>
     </div>
 
     <nav class="dock-nav" id="dockNav">
         <a href="index.html" title="Gameshow"><i class="fas fa-gamepad"></i><span class="tooltip">Gameshow</span></a>
         <a href="sanpham.html" title="Sản Phẩm"><i class="fas fa-box-archive"></i><span class="tooltip">Sản Phẩm</span></a>
         <a href="ghichu.html" title="Ghi Chú"><i class="fas fa-sticky-note"></i><span class="tooltip">Ghi Chú</span></a>
-        <a href="vlog.html" title="Kỉ niệm" class="active"><i class="fas fa-camera"></i><span class="tooltip">Kỉ niệm</span></a>
+        <a href="vlog.html" title="Vlog" class="active"><i class="fas fa-video"></i><span class="tooltip">Vlog</span></a>
     </nav>
 
-    <script src="js/vlog/vlog_data.js"></script>
+    <script src="js/vlog/locket_data.js"></script>
+    <script src="js/vlog/insta_data.js"></script>
+    
+    <script src="js/vlog/locket_module.js"></script>
+    <script src="js/vlog/insta_module.js"></script>
+    
     <script src="js/vlog/vlog_logic.js"></script>
+    
     <script src="js/chatbox/chatbox-injector.js"></script>
 </body>
 </html>

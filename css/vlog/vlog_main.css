@@ -1,0 +1,216 @@
+/* ============================================================ */
+/* VLOG MAIN STYLE: LAYOUT, SIDEBAR & MODAL FIXES               */
+/* ============================================================ */
+
+/* --- 1. Reset & Cơ sở --- */
+body {
+    background: #0f0f1e !important;
+    color: #e0d6ff;
+    font-family: 'Segoe UI', Roboto, sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+/* --- 2. Chữ Trang Trí (Sửa lỗi chặn Click) --- */
+.desktop-decor {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none; /* QUAN TRỌNG: Cho phép click xuyên qua để vào bài viết */
+    overflow: hidden;
+}
+
+.decor-text {
+    position: absolute;
+    font-size: 10vw;
+    font-weight: 900;
+    color: rgba(187, 134, 252, 0.03);
+    text-transform: uppercase;
+    user-select: none;
+}
+.top-right { top: 5%; right: -2%; transform: rotate(10deg); }
+.bottom-left { bottom: 10%; left: 2%; transform: rotate(-5deg); }
+
+/* --- 3. Sidebar Profile & Thống kê --- */
+.personal-sidebar {
+    position: fixed;
+    top: 50%;
+    left: 40px;
+    transform: translateY(-50%);
+    width: 280px;
+    z-index: 1001;
+}
+
+.profile-card-static {
+    background: rgba(34, 27, 53, 0.8);
+    padding: 30px 20px;
+    border-radius: 40px;
+    border: 1px solid rgba(187, 134, 252, 0.2);
+    backdrop-filter: blur(20px);
+    text-align: center;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+}
+
+/* Bảng thống kê (Mới bổ sung) */
+.stats-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background: rgba(187, 134, 252, 0.1);
+    margin: 20px 0;
+    padding: 15px 10px;
+    border-radius: 20px; /* Bo góc bảng thống kê */
+}
+
+.stat-item span {
+    display: block;
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: #03dac6;
+}
+
+.stat-item p {
+    font-size: 0.7rem;
+    margin: 0;
+    color: #a0a0c0;
+    text-transform: uppercase;
+}
+
+.stat-divider {
+    width: 1px;
+    height: 30px;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Nút chuyển đổi Mode (Đã bo góc) */
+.vlog-categories {
+    margin-top: 20px;
+}
+
+.cat-label {
+    font-size: 0.75rem;
+    font-weight: bold;
+    color: #bb86fc;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.mode-switcher-grid {
+    display: flex;
+    gap: 10px;
+}
+
+.mode-btn {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.05);
+    color: #fff;
+    border: 1px solid rgba(187, 134, 252, 0.2);
+    padding: 12px;
+    border-radius: 15px; /* Bo góc nút bấm */
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.mode-btn:hover {
+    background: rgba(187, 134, 252, 0.15);
+}
+
+.mode-btn.active {
+    background: #bb86fc;
+    color: #1a1a2e;
+    border-color: #bb86fc;
+    box-shadow: 0 5px 15px rgba(187, 134, 252, 0.4);
+}
+
+/* --- 4. Khu vực nội dung chính --- */
+.archive-overlay {
+    margin-left: 360px;
+    padding: 60px 40px 120px 0;
+    min-height: 100vh;
+    z-index: 10;
+    position: relative;
+}
+
+/* --- 5. Modal Chi Tiết (Sửa lỗi nút X) --- */
+.detail-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(10, 10, 20, 0.95);
+    z-index: 2000;
+    display: none; /* Mặc định ẩn */
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    backdrop-filter: blur(10px);
+}
+
+.modal-content {
+    position: relative; /* Gốc tọa độ cho nút Close */
+    max-width: 450px;
+    width: 100%;
+    animation: zoomIn 0.3s ease-out;
+}
+
+.close-modal-btn {
+    position: fixed; /* Chuyển từ absolute sang fixed để cố định khi cuộn */
+    top: 20px;       /* Đưa xuống dưới từ mép trên màn hình */
+    right: 20px;      /* Đưa vào trong từ mép phải màn hình */
+    width: 45px;      /* Tăng kích thước một chút để dễ bấm trên mobile */
+    height: 45px;
+    background: rgba(255, 71, 87, 0.9); /* Thêm độ trong suốt nhẹ */
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 3000;    /* Đảm bảo luôn nằm trên cùng của Modal Feed */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    transition: all 0.2s ease;
+    backdrop-filter: blur(5px); /* Thêm hiệu ứng mờ nền cho nút */
+}
+
+.close-modal-btn:hover {
+    background: #ff4757;
+    transform: scale(1.1) rotate(90deg); /* Thêm hiệu ứng xoay khi hover */
+}
+
+#modalMediaContainer img {
+    width: 100%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    border-radius: 40px; /* Bo góc ảnh trong modal */
+    border: 4px solid #bb86fc;
+}
+
+.detail-info {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.detail-info h3 { color: #03dac6; font-size: 1.4rem; margin-bottom: 8px; }
+.detail-info p { color: #a0a0c0; font-size: 0.95rem; line-height: 1.5; }
+#detailDate { font-size: 0.8rem; color: #bb86fc; opacity: 0.7; }
+
+/* --- 6. Mobile Responsive --- */
+@media (max-width: 1024px) {
+    .archive-overlay { margin-left: 0; padding: 20px; }
+    .personal-sidebar {
+        position: relative;
+        top: 0; left: 0;
+        transform: none;
+        width: 100%;
+        margin-bottom: 30px;
+    }
+    .profile-card-static { border-radius: 30px; }
+}
+
+@keyframes zoomIn {
+    from { transform: scale(0.9); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
