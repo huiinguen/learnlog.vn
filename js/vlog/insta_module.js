@@ -20,7 +20,7 @@ function renderInstaMode(container) {
                 <div class="u-info">
                     <div class="u-avatar">${item.location ? item.location.charAt(0) : 'G'}</div>
                     <div>
-                        <div class="u-name">Trùm Tạo Bug</div>
+                        <div class="u-name">ERROR⚠️</div>
                         <div class="u-loc"><i class="fas fa-map-marker-alt"></i> ${item.location || 'Unknown'}</div>
                     </div>
                 </div>
@@ -63,7 +63,7 @@ function renderInstaMode(container) {
                 <div class="post-content-area">
                     <div class="post-likes"><b>${item.likes || 0}</b> lượt thích</div>
                     <div class="post-desc">
-                        <span class="u-name-inline"><b>Trùm Tạo Bug</b></span> ${item.description}
+                        <span class="u-name-inline"><b>ERROR⚠️</b></span> ${item.description}
                     </div>
                     <div class="post-date">${item.date}</div>
                 </div>

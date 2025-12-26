@@ -1,6 +1,3 @@
-// ================================================
-// DỮ LIỆU CÂU HỎI CHO CHẾ ĐỘ THI CHỨNG CHỈ
-// ================================================
 const quizData = {
     cpp: [
         { question: "Trong C++, hàm nào được gọi tự động khi đối tượng bị hủy?", options: ["constructor", "destructor", "finalizer", "delete"], correct: 1 },

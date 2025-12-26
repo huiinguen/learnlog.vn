@@ -25,9 +25,9 @@ var allProducts = [
     category: "Học Tập",
     resourceLink:
       "https://drive.google.com/file/d/1bjGwV6-9t8tHG64jWE_ddd3X_xvurkiW/view?fbclid=IwY2xjawMKzSVleHRuA2FlbQIxMABicmlkETEwbHFWSHpyRVloVXVHSXNTAR7MIoPcrzvNch_DPzf6LYmIbMl7B-EUmlO6J6KVv1QW-2FmZGlW8g0VSO86Dg_aem_qFU4bP_1FQBxSy28zYCy_w",
-    description: "Mô tả chi tiết về sourcode web bán hàng...", 
-    functions: "Quản lý sản phẩm, đơn hàng, khách hàng; giỏ hàng, thanh toán.", 
-    status: "Vẫn cập nhật", 
+    description: "Mô tả chi tiết về sourcode web bán hàng...",
+    functions: "Quản lý sản phẩm, đơn hàng, khách hàng; giỏ hàng, thanh toán.",
+    status: "Vẫn cập nhật",
   },
   {
     id: 2,
@@ -174,7 +174,8 @@ var allProducts = [
     images_gallery: ["images/"],
     category: "Học Tập",
     subCategory: "Lập trình python",
-    resourceLink:"https://drive.google.com/drive/u/0/folders/1XxvRMSDA-KgfRL8oC-vLkbUpM8Tdcq3o",
+    resourceLink:
+      "https://drive.google.com/drive/u/0/folders/1XxvRMSDA-KgfRL8oC-vLkbUpM8Tdcq3o",
   },
   {
     id: 17,
@@ -182,7 +183,8 @@ var allProducts = [
     price: 0,
     images_gallery: ["images/"],
     category: "Học Tập",
-    resourceLink:"https://github.com/orgs/TheAlgorithms/repositories?q=sort%3Astars&utm_source=j2team&utm_medium=url_shortener&utm_campaign=The-Algorithms",
+    resourceLink:
+      "https://github.com/orgs/TheAlgorithms/repositories?q=sort%3Astars&utm_source=j2team&utm_medium=url_shortener&utm_campaign=The-Algorithms",
   },
   {
     id: 18,
@@ -210,7 +212,8 @@ var allProducts = [
     images_gallery: ["images/"],
     category: "Học Tập",
     subCategory: "Khóa học",
-    resourceLink:"https://drive.google.com/drive/folders/1QLbk4yfZ5VLhuzYDhQAhmI2f36SwXQlh",
+    resourceLink:
+      "https://drive.google.com/drive/folders/1QLbk4yfZ5VLhuzYDhQAhmI2f36SwXQlh",
   },
   {
     id: 21,
@@ -219,7 +222,8 @@ var allProducts = [
     images_gallery: ["images/"],
     category: "Học Tập",
     subCategory: "Lập trình c/c++",
-    resourceLink:"https://github.com/codetoanbug/Tai_Lieu_cpp?fbclid=IwY2xjawMXhipleHRuA2FlbQIxMABicmlkETF2dExOd0dleDNqOXpvN3NhAR7nufqhYr2PkFKl0XguRztCOJYDdGstgYvzCiUcm_ZSRAIy38WVpXlix7BLAg_aem_4nAlqQmR77lKAF6eDCsTjw",
+    resourceLink:
+      "https://github.com/codetoanbug/Tai_Lieu_cpp?fbclid=IwY2xjawMXhipleHRuA2FlbQIxMABicmlkETF2dExOd0dleDNqOXpvN3NhAR7nufqhYr2PkFKl0XguRztCOJYDdGstgYvzCiUcm_ZSRAIy38WVpXlix7BLAg_aem_4nAlqQmR77lKAF6eDCsTjw",
   },
   {
     id: 22,
@@ -228,7 +232,8 @@ var allProducts = [
     images_gallery: ["images/"],
     category: "Học Tập",
     subCategory: "Lập trình java",
-    resourceLink:"https://github.com/lydiahallie/javascript-questions/blob/master/vi-VI/README-vi.md?fbclid=IwY2xjawMXiZ5leHRuA2FlbQIxMABicmlkETF2dExOd0dleDNqOXpvN3NhAR43ecPpe7NEEKGa-hpapFJeNnBsNRrKFms35NTx87rJlcw9APWIwad9XFrkqg_aem_X6xueb_8bw_j7OLguSZtZA",
+    resourceLink:
+      "https://github.com/lydiahallie/javascript-questions/blob/master/vi-VI/README-vi.md?fbclid=IwY2xjawMXiZ5leHRuA2FlbQIxMABicmlkETF2dExOd0dleDNqOXpvN3NhAR43ecPpe7NEEKGa-hpapFJeNnBsNRrKFms35NTx87rJlcw9APWIwad9XFrkqg_aem_X6xueb_8bw_j7OLguSZtZA",
   },
   {
     id: 23,
@@ -237,7 +242,8 @@ var allProducts = [
     images_gallery: ["images/"],
     category: "Học Tập",
     subCategory: "Lập trình c/c++",
-    resourceLink:"https://github.com/MAZHARMIK/Interview_DS_Algo?fbclid=IwY2xjawMXiiFleHRuA2FlbQIxMABicmlkETF2dExOd0dleDNqOXpvN3NhAR7nufqhYr2PkFKl0XguRztCOJYDdGstgYvzCiUcm_ZSRAIy38WVpXlix7BLAg_aem_4nAlqQmR77lKAF6eDCsTjw",
+    resourceLink:
+      "https://github.com/MAZHARMIK/Interview_DS_Algo?fbclid=IwY2xjawMXiiFleHRuA2FlbQIxMABicmlkETF2dExOd0dleDNqOXpvN3NhAR7nufqhYr2PkFKl0XguRztCOJYDdGstgYvzCiUcm_ZSRAIy38WVpXlix7BLAg_aem_4nAlqQmR77lKAF6eDCsTjw",
   },
   {
     id: 24,
@@ -271,15 +277,6 @@ var allProducts = [
   },
 
   {
-    id: 30,
-    name: "tut thuê tick xanh fb",
-    price: 0,
-    images_gallery: ["images/"],
-    category: "Học Tập",
-    subCategory: "Khóa học",
-    resourceLink:"https://docs.google.com/document/d/13fcIsgVpZWXAPbdRYZR5yhCYJ8Zyw2rNOdNbZeIdkRs/edit?tab=t.0#heading=h.ezhl5ec3e9jy",
-  },
-  {
     id: 31,
     name: "capcut pro mod androi",
     price: 0,
@@ -298,24 +295,7 @@ var allProducts = [
     resourceLink:
       "https://drive.google.com/drive/folders/1FNNweSUKpAYYx9BOPh9ZN0D3RfXnJy9Q",
   },
-  {
-    id: 33,
-    name: "tiktok beta",
-    price: 0,
-    images_gallery: ["images/"],
-    category: "Học Tập",
-    subCategory: "Khóa học",
-    resourceLink:"https://drive.google.com/drive/folders/136c-IJJobaVaq_dmyE9o2svj4GX49F4v",
-  },
-  {
-    id: 34,
-    name: "ngâm tick xanh",
-    price: 0,
-    images_gallery: ["images/"],
-    category: "Học Tập",
-    subCategory: "Khóa học",
-    resourceLink:"https://docs.google.com/spreadsheets/d/1cM32swSy-hXu7ypQqqD7jmDiOMdJfW_JWFIJqGMHQKs/edit?gid=0#gid=0",
-  },
+
   {
     id: 35,
     name: "đăng ảnh/video locket",
@@ -341,7 +321,8 @@ var allProducts = [
     images_gallery: ["images/"],
     category: "Học Tập",
     subCategory: "Khóa học",
-    resourceLink:"https://drive.google.com/drive/folders/1lQpnZoyG7hI-V57xOtn9-qOGfL5yoLq4",
+    resourceLink:
+      "https://drive.google.com/drive/folders/1lQpnZoyG7hI-V57xOtn9-qOGfL5yoLq4",
   },
   {
     id: 39,
@@ -359,7 +340,8 @@ var allProducts = [
     images_gallery: ["images/"],
     category: "Học Tập",
     subCategory: "Khóa học",
-    resourceLink:"https://drive.google.com/drive/folders/1-d_zpGlu8ma4mnFXvXw_5m1_5VEso2t7",
+    resourceLink:
+      "https://drive.google.com/drive/folders/1-d_zpGlu8ma4mnFXvXw_5m1_5VEso2t7",
   },
   {
     id: 41,
@@ -368,7 +350,8 @@ var allProducts = [
     images_gallery: ["images/"],
     category: "Học Tập",
     subCategory: "Khóa học",
-    resourceLink:"https://drive.google.com/drive/folders/1kKu-Ln2CMlmm05TRSRd1-1B0DTNzuU0I",
+    resourceLink:
+      "https://drive.google.com/drive/folders/1kKu-Ln2CMlmm05TRSRd1-1B0DTNzuU0I",
   },
   {
     id: 42,
@@ -377,7 +360,8 @@ var allProducts = [
     images_gallery: ["images/flappybird_code.jpg"],
     category: "Học Tập",
     subCategory: "Lập trình java",
-    resourceLink:"https://github.com/codetoanbug/Java-HIT-2019?fbclid=IwY2xjawMf-S9leHRuA2FlbQIxMABicmlkETFSWEFMY0pqTHVMeHVmRURnAR4wz8RubAqFwosvS2RjPnWTDN5wksIDYyQdEdxNsoVqYNgjMnetdLCskNohMA_aem_5PuTCslE3DpGBiNb1SQIpg",
+    resourceLink:
+      "https://github.com/codetoanbug/Java-HIT-2019?fbclid=IwY2xjawMf-S9leHRuA2FlbQIxMABicmlkETFSWEFMY0pqTHVMeHVmRURnAR4wz8RubAqFwosvS2RjPnWTDN5wksIDYyQdEdxNsoVqYNgjMnetdLCskNohMA_aem_5PuTCslE3DpGBiNb1SQIpg",
   },
   {
     id: 43,
@@ -386,7 +370,8 @@ var allProducts = [
     images_gallery: ["images/flappybird_code.jpg"],
     category: "Học Tập",
     subCategory: "Lập trình java",
-    resourceLink:"https://github.com/codetoanbug/Java-PTIT?fbclid=IwY2xjawMf-XlleHRuA2FlbQIxMABicmlkETFSWEFMY0pqTHVMeHVmRURnAR4CSbJZbvlJmzVh2GRwp_w_2zuhmtoT35FViCmOwjP15emA8sdv8AYCpvdvQw_aem_eSbL5JLxmxGysWh9dZ8Vpg",
+    resourceLink:
+      "https://github.com/codetoanbug/Java-PTIT?fbclid=IwY2xjawMf-XlleHRuA2FlbQIxMABicmlkETFSWEFMY0pqTHVMeHVmRURnAR4CSbJZbvlJmzVh2GRwp_w_2zuhmtoT35FViCmOwjP15emA8sdv8AYCpvdvQw_aem_eSbL5JLxmxGysWh9dZ8Vpg",
   },
   {
     id: 44,
@@ -395,7 +380,8 @@ var allProducts = [
     images_gallery: ["images/flappybird_code.jpg"],
     category: "Học Tập",
     subCategory: "Lập trình python",
-    resourceLink:"https://github.com/codetoanbug/pytutor?fbclid=IwY2xjawMf-iZleHRuA2FlbQIxMABicmlkETFSWEFMY0pqTHVMeHVmRURnAR4Zlaq9aSsL6R55wcwIEXp0dNxyXaVO1tl94gCvBWXegx7v2b7DB1eb0TFwzA_aem_5NeJJ4WIk08ZmQ6_TQnu6Q",
+    resourceLink:
+      "https://github.com/codetoanbug/pytutor?fbclid=IwY2xjawMf-iZleHRuA2FlbQIxMABicmlkETFSWEFMY0pqTHVMeHVmRURnAR4Zlaq9aSsL6R55wcwIEXp0dNxyXaVO1tl94gCvBWXegx7v2b7DB1eb0TFwzA_aem_5NeJJ4WIk08ZmQ6_TQnu6Q",
   },
   {
     id: 45,
@@ -414,7 +400,8 @@ var allProducts = [
     images_gallery: ["images/"],
     category: "Học Tập",
     subCategory: "Khóa học",
-    resourceLink:"https://drive.google.com/drive/folders/17OmUO45MVdow04ahkvtad2c5Up-cjnMU",
+    resourceLink:
+      "https://drive.google.com/drive/folders/17OmUO45MVdow04ahkvtad2c5Up-cjnMU",
   },
   {
     id: 47,
@@ -422,7 +409,8 @@ var allProducts = [
     price: 0,
     images_gallery: ["images/py.jpg"],
     category: "Học Tập",
-    resourceLink:"https://www.youtube.com/playlist?list=PLRLJQuuRRcFnwlQxGeVSVv-z_5tFwAh0j",
+    resourceLink:
+      "https://www.youtube.com/playlist?list=PLRLJQuuRRcFnwlQxGeVSVv-z_5tFwAh0j",
   },
   {
     id: 48,
@@ -441,7 +429,8 @@ var allProducts = [
     images_gallery: ["images/py.jpg"],
     category: "Học Tập",
     subCategory: "Lập trình java",
-    resourceLink:"https://github.com/codetoanbug/Java-PTIT?fbclid=IwY2xjawMukW1leHRuA2FlbQIxMABicmlkETFwVXBnQ3VidzkycG9KeDRJAR6etAqx7kKEsJpFeEDLrPP-HqKtrhkKTJutRfAeQiwQGbguoccXtTtKjy9rbQ_aem_YD-DJ8Ra0_K4XEoNtRc2YQ",
+    resourceLink:
+      "https://github.com/codetoanbug/Java-PTIT?fbclid=IwY2xjawMukW1leHRuA2FlbQIxMABicmlkETFwVXBnQ3VidzkycG9KeDRJAR6etAqx7kKEsJpFeEDLrPP-HqKtrhkKTJutRfAeQiwQGbguoccXtTtKjy9rbQ_aem_YD-DJ8Ra0_K4XEoNtRc2YQ",
   },
   {
     id: 50,
@@ -515,7 +504,8 @@ var allProducts = [
     images_gallery: ["images/py.jpg"],
     category: "Học Tập",
     subCategory: "Lập trình c/c++",
-    resourceLink:"https://github.com/codetoanbug/The-Ultimate-C-Programming-Course?fbclid=IwY2xjawM7waBleHRuA2FlbQIxMABicmlkETE0ZUNoQnFhbGdMVDRaWXBuAR6DUMJx4AJVjQAtyuzbC5UEaSGzpdmMMJdI2irIIjy--94dUGstxlbd-FpUVA_aem_yAUs70NvG4szUHozyxZDPA",
+    resourceLink:
+      "https://github.com/codetoanbug/The-Ultimate-C-Programming-Course?fbclid=IwY2xjawM7waBleHRuA2FlbQIxMABicmlkETE0ZUNoQnFhbGdMVDRaWXBuAR6DUMJx4AJVjQAtyuzbC5UEaSGzpdmMMJdI2irIIjy--94dUGstxlbd-FpUVA_aem_yAUs70NvG4szUHozyxZDPA",
   },
 
   {
@@ -616,8 +606,8 @@ var allProducts = [
     name: "Kênh học AI(YOUTUBE)",
     price: 0,
     images_gallery: ["images/py.jpg"],
-    category: "Tài Nguyên",
-    subCategory: "Lập trình",
+    category: "Học Tập",
+    subCategory: "Học AI",
     resourceLink: "https://www.youtube.com/@stanfordonline/videos",
   },
   {
@@ -661,16 +651,6 @@ var allProducts = [
       "https://www.mediafire.com/file/orwquudpcecuccm/Capcut_PRO_15.3.0-15300300_Apksmod%E1%B5%97%E1%B5%98%E1%B5%87%E1%B5%92%E1%B5%97%E1%B5%92%E1%B6%9C%E1%B5%88%E1%B5%92.apk/file",
   },
   {
-    id: 77,
-    name: "Tut capcut free ngày",
-    price: 0,
-    images_gallery: ["images/locket.jpg"],
-    category: "Tài Nguyên",
-    subCategory: "Mod(app,module...)",
-    resourceLink:
-      "https://docs.google.com/document/d/14InVQjknhqTjEB_3zSILAlV5bhqqdIgaPcHasKrzahM/edit?tab=t.0#heading=h.apsvobr6lifq",
-  },
-  {
     id: 78,
     name: "Excel",
     price: 0,
@@ -689,24 +669,16 @@ var allProducts = [
     subCategory: "Mod(app,module...)",
     resourceLink: "https://capcut.vi.uptodown.com/windows/dw/91204437",
   },
-    {
-    id: 80,
-    name: "WEB KHO APP MOD",
-    price: 0,
-    images_gallery: ["images/locket.jpg"],
-    category: "Tài Nguyên",
-    subCategory: "APP PC/LAP",
-    resourceLink: "https://vi.uptodown.com/windows/ung-dung",
-  },
 
-      {
+  {
     id: 81,
     name: "Lập trình giao diện c++ bằng MFC",
     price: 0,
     images_gallery: ["images/locket.jpg"],
     category: "Học Tập",
     subCategory: "Lập trình c/c++",
-    resourceLink: "https://www.youtube.com/playlist?list=PLfszubEEhakf7mGTDjsImyp-YGU69_S5k",
+    resourceLink:
+      "https://www.youtube.com/playlist?list=PLfszubEEhakf7mGTDjsImyp-YGU69_S5k",
   },
 ];
 

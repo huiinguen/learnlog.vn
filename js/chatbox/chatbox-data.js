@@ -12,16 +12,11 @@ const chatBotKnowledge = [
     response: 'Chi tiết hướng dẫn & tài nguyên: <a href="sanpham.html" target="_blank" style="color: #03dac6; font-weight: bold;">Xem tại đây</a>.',
   },
 
-  // 3. LIÊN HỆ / THANH TOÁN
-  {
-    keywords: ["liên hệ", "lien he", "hotline", "zalo", "mua", "giá", "phí", "thanh toán", "hỗ trợ", "admin", "sdt", "email"],
-    response: 'Email hỗ trợ: **hcao84539@gmail.com**. Admin sẽ phản hồi sớm nhất cho Bro!',
-  },
 
   // 4. GIỚI THIỆU TRANG WEB
   {
     keywords: ["trang web", "web", "tác giả", "giới thiệu", "chủ web", "mục đích", "thông tin", "ai làm"],
-    response: "Trang web này là thư viện Tài Nguyên Kỹ thuật & Lập trình, xây dựng bởi **HV** nhằm chia sẻ kiến thức và công cụ hữu ích.",
+    response: "Trang web này là thư viện Tài Nguyên Kỹ thuật & Lập trình, xây dựng bởi @Huiibaby nhằm chia sẻ kiến thức và công cụ hữu ích.",
   },
 
   // 5. CHÀO HỎI & GIAO TIẾP
@@ -38,7 +33,7 @@ const chatBotKnowledge = [
 
   // 7. CẢM XÚC TIÊU CỰC / TÂM SỰ
   {
-    keywords: ["buồn", "chán", "mệt", "thất vọng", "tâm sự", "khóc", "áp lực", "stress"],
+    keywords: ["buồn", "chán", "mệt", "thất vọng", "tâm sự", "khóc", "áp lực", "stress","lú"],
     response: "Tôi hiểu cảm giác của bạn. Nghỉ ngơi một chút, uống ly cà phê rồi mọi chuyện sẽ ổn thôi! 😊",
   },
 
@@ -48,6 +43,10 @@ const chatBotKnowledge = [
     response: 'Bạn có thể cài đặt trang này như một ứng dụng (PWA). Hướng dẫn: <a href="huongdan.html" target="_blank" style="color: #03dac6; font-weight: bold;">Tại đây</a>.',
   },
 
+  // kiến thức 
+  {
+
+  },
 
 
   // 10. THỜI GIAN & BÁO LỖI (Hàm đặc biệt)
