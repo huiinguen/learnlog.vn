@@ -280,27 +280,29 @@ footer {
     
     display: flex;
     align-items: flex-end;
-    gap: 10px;
-    padding: 10px 15px;
-    height: 75px; 
+    gap: 12px;
+    padding: 10px 20px;
+    height: 70px; /* Chiều cao cố định */
     
-    /* Logic cuộn ngang */
-    max-width: 90vw;           /* Không tràn quá 90% màn hình */
-    overflow-x: auto;          /* Hiện cuộn khi quá nhiều icon */
+    /* QUAN TRỌNG: Giới hạn kích thước và cho phép trượt */
+    width: auto;
+    max-width: 90vw;           /* Không vượt quá 90% chiều rộng màn hình */
+    overflow-x: auto;          /* Hiện thanh cuộn khi vượt quá chiều rộng */
     overflow-y: hidden;        /* Chặn cuộn dọc */
-    white-space: nowrap;       /* Giữ icon trên một hàng */
+    white-space: nowrap;       /* Giữ tất cả icon trên 1 hàng duy nhất */
     
-    /* Giao diện Dark Glass (Hợp với theme tím của bạn) */
-    background-color: rgba(34, 27, 53, 0.6); 
-    border-radius: 25px;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+    /* Giao diện Dark Glass */
+    background: rgba(20, 20, 35, 0.7);
+    border-radius: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     border: 1px solid rgba(187, 134, 252, 0.2);
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
 
-    /* Ẩn thanh cuộn để đẹp hơn */
+    /* Ẩn thanh cuộn vật lý để trông sạch sẽ hơn */
     scrollbar-width: none;       /* Firefox */
     -ms-overflow-style: none;    /* IE/Edge */
+    transition: all 0.3s ease;
 }
 
 .dock-nav::-webkit-scrollbar {

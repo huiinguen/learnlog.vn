@@ -2,8 +2,31 @@
  * file: main.js
  * Chứa logic điều hướng, thanh Dock macOS cải tiến và các tiện ích chung.
  */
+// Khởi tạo hoặc lấy dữ liệu tracking từ LocalStorage
+let userStats = JSON.parse(localStorage.getItem('userStats')) || {
+    username: "Guest",
+    loginCount: 0,
+    clicks: { product: 0, note: 0, quiz: 0, vlog: 0 },
+    lastLogin: new Date().toLocaleDateString()
+};
 
+// Hàm ghi nhận click
+function trackClick(type) {
+    if (userStats.clicks.hasOwnProperty(type)) {
+        userStats.clicks[type]++;
+        localStorage.setItem('userStats', JSON.stringify(userStats));
+    }
+}
+
+// Tự động gán sự kiện track cho các trang
+document.addEventListener('click', (e) => {
+    if (window.location.pathname.includes('sanpham')) trackClick('product');
+    if (window.location.pathname.includes('ghichu')) trackClick('note');
+    if (window.location.pathname.includes('index')) trackClick('quiz');
+    
+});
 document.addEventListener('DOMContentLoaded', function() {
+    
     console.log("Hệ thống đã sẵn sàng!");
 
     // ===============================================

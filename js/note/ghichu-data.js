@@ -4,7 +4,6 @@ const notesData = [
     title: "Đảo ngược chuỗi (String Reversal)",
     category: "Lập trình",
     subCategory: "Python",
-
     answer:
       "Sử dụng slicing với bước nhảy $-1$ để đảo ngược chuỗi một cách ngắn gọn và 'Pythonic'.",
     code: {
@@ -25,62 +24,9 @@ const notesData = [
       content: `numbers = [1, 2, 3, 4, 5]\nsquares = [x**2 for x in numbers if x > 2]\nprint(squares) # [9, 16, 25]`,
     },
   },
+
   {
     id: 3,
-    title: "Bắt lỗi bất đồng bộ với async/await",
-    category: "Lập trình",
-    subCategory: "JavaScript",
-
-    answer:
-      "Sử dụng khối `try...catch` bao quanh hàm `await` để xử lý các lỗi mạng hoặc lỗi từ server.",
-    code: {
-      lang: "JavaScript",
-      content: `async function fetchData(url) {\n  try {\n    const response = await fetch(url);\n    const data = await response.json();\n    return data;\n  } catch (error) {\n    console.error("Lỗi:", error);\n  }\n}`,
-    },
-  },
-  {
-    id: 4,
-    title: "Căn giữa phần tử với Flexbox",
-    category: "Giao diện",
-    subCategory: "CSS",
-
-    answer:
-      "Sử dụng cặp thuộc tính `justify-content` và `align-items` trên thẻ cha (display: flex).",
-    code: {
-      lang: "CSS",
-      content: `.container {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  height: 100vh;\n}`,
-    },
-  },
-
-  {
-    id: 6,
-    title: "Tạo bảng (Table) chuẩn SEO",
-    category: "Giao diện",
-    subCategory: "HTML",
-
-    answer:
-      "Sử dụng đầy đủ các thẻ semantic như `thead`, `tbody`, và `th` để hỗ trợ trình đọc màn hình.",
-    code: {
-      lang: "HTML",
-      content: `<table>\n  <thead>\n    <tr><th>ID</th><th>Tên</th></tr>\n  </thead>\n  <tbody>\n    <tr><td>1</td><td>Gemini</td></tr>\n  </tbody>\n</table>`,
-    },
-  },
-
-  {
-    id: 16,
-    title: "Lập trình đa luồng (Multithreading)",
-    category: "Lập trình",
-    subCategory: "Java",
-
-    answer:
-      "Sử dụng Thread để thực hiện các tác vụ song song, giúp tối ưu hiệu suất xử lý.",
-    code: {
-      lang: "Java",
-      content: `class MyThread extends Thread {\n  public void run() { System.out.println("Thread is running..."); }\n}\nMyThread t1 = new MyThread(); t1.start();`,
-    },
-  },
-  {
-    id: 17,
     title: "Hàm Lambda trong C++",
     category: "Lập trình",
     subCategory: "C++",
@@ -93,7 +39,7 @@ const notesData = [
     },
   },
   {
-    id: 18,
+    id: 4,
     title: "Sử dụng con trỏ (Pointers) cơ bản",
     category: "Lập trình",
     subCategory: "C",
@@ -106,9 +52,8 @@ const notesData = [
     },
   },
 
-
   {
-    id: 28,
+    id: 5,
     title: "Sắp xếp nhanh (Quick Sort)",
     category: "Thuật toán",
     subCategory: "C++",
@@ -146,7 +91,7 @@ void quickSort(int arr[], int low, int high) {
     },
   },
   {
-    id: 29,
+    id: 6,
     title: "Sắp xếp chèn (Insertion Sort)",
     category: "Thuật toán",
     subCategory: "C++",
@@ -170,7 +115,7 @@ void insertionSort(int arr[], int n) {
     },
   },
   {
-    id: 30,
+    id: 7,
     title: "Sắp xếp chọn (Selection Sort)",
     category: "Thuật toán",
     subCategory: "C++",
@@ -196,7 +141,7 @@ void selectionSort(int arr[], int n) {
     },
   },
   {
-    id: 31,
+    id: 8,
     title: "Sắp xếp nổi bọt (Bubble Sort)",
     category: "Thuật toán",
     subCategory: "C++",
@@ -217,6 +162,21 @@ void bubbleSort(int arr[], int n) {
         }
     }
 }`,
+    },
+  },
+
+  {
+    id: 9,
+    title: "Mua tài khoản?",
+    category: "MMO",
+    subCategory: "Tài khoản",
+    answer: "rất rủi ro.",
+    code: {
+      content: `
+      1.tài khoản bị dính điều tra
+      2.tài khoản bị hack đem bán lại
+      3.dễ bị back lại tài khoản
+      4.dễ bị nền tảng quét`,
     },
   },
 ];

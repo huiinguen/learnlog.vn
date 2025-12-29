@@ -43,21 +43,18 @@ const chatBotKnowledge = [
     response: 'Bạn có thể cài đặt trang này như một ứng dụng (PWA). Hướng dẫn: <a href="huongdan.html" target="_blank" style="color: #03dac6; font-weight: bold;">Tại đây</a>.',
   },
 
-  // kiến thức 
+  //9. báo lỗi
   {
-
+    keywords:["báo cáo lỗi","lỗi","phản hồi","fix","report"],
+    response:'GỬI THÔNG BÁO ĐẾN "hcao84539@gmail.com" ĐỂ CHÚNG TÔI BIẾT.',
   },
 
+  //10. review app
 
-  // 10. THỜI GIAN & BÁO LỖI (Hàm đặc biệt)
-  {
-    keywords: ["mấy giờ", "thời gian", "time", "giờ", "ngày"],
-    response: "[CURRENT_TIME]",
-  },
-  {
-    keywords: ["lỗi", "bug", "hỏng", "không chạy", "báo cáo", "report"],
-    response: "[report]",
-  },
+  
+
+
+
 ];
 
 // Phản hồi mặc định khi không tìm thấy kết quả mờ nào khớp

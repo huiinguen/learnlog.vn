@@ -595,7 +595,7 @@ var allProducts = [
     id: 67,
     name: "Cấu hình chặn quảng cáo iphone",
     price: 0,
-    images_gallery: ["images/10.jpg", "images/11.jpg"],
+    images_gallery: ["https://res.cloudinary.com/dxcuzqm9m/image/upload/v1766757153/11_ggfg4h.jpg", "https://res.cloudinary.com/dxcuzqm9m/image/upload/v1766757153/10_wpj2lk.jpg"],
     category: "Tài Nguyên",
     subCategory: "Mod(app,module...)",
     resourceLink: "https://www.mediafire.com/file/mp73j9qvevt2hdq",
@@ -658,7 +658,7 @@ var allProducts = [
     category: "Học Tập",
     subCategory: "Excel",
     resourceLink:
-      "https://drive.google.com/drive/folders/1c-vkF3LWF1-OAyCfILIHC12bHlr4TBoQ",
+      "https://drive.google.com/drive/folders/1ym2rV7q5GcpBsuVAIxwZkiP34T5KeL93",
   },
   {
     id: 79,

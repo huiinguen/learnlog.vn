@@ -2,6 +2,7 @@
 function updateStatistics() {
     document.getElementById('locketCount').innerText = LOCKET_DATA.length;
     document.getElementById('instaCount').innerText = INSTA_DATA.length;
+    document.getElementById('thoughtCount').innerText = THOUGHT_DATA.length; 
 }
 
 // 2. Chuyển đổi Mode
@@ -9,16 +10,20 @@ function switchMode(mode) {
     const container = document.getElementById('vlogContainer');
     const buttons = document.querySelectorAll('.mode-btn');
     
-    // Cập nhật UI nút
     buttons.forEach(btn => btn.classList.remove('active'));
-    if(mode === 'locket') document.getElementById('btn-locket').classList.add('active');
-    else document.getElementById('btn-insta').classList.add('active');
+    
+    // Cập nhật ID nút active tương ứng
+    const activeBtn = document.getElementById(`btn-${mode}`);
+    if (activeBtn) activeBtn.classList.add('active');
 
     container.innerHTML = '';
+    
     if (mode === 'locket') {
-        renderLocketMode(container); // Gọi từ locket_module.js
-    } else {
-        renderInstaMode(container);  // Gọi từ insta_module.js
+        renderLocketMode(container);
+    } else if (mode === 'insta') {
+        renderInstaMode(container);
+    } else if (mode === 'thought') {
+        renderThoughtMode(container);
     }
 }
 

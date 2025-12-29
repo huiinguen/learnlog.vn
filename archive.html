@@ -1,21 +1,71 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kho Lưu Trữ - My Notes</title>
-    <link rel="stylesheet" href="css/style.css"> 
+    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/note/ghichu.css">
     <link rel="stylesheet" href="css/note/archive.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <style>
+        /* CSS bổ trợ cho Menu thả xuống */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            background-color: #1e1e38;
+            min-width: 200px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.5);
+            z-index: 100;
+            border: 1px solid #3a3a5e;
+            border-radius: 8px;
+            margin-top: 5px;
+            overflow: hidden;
+        }
+
+        .dropdown-content a {
+            color: #e0d6ff;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            font-size: 0.9em;
+            transition: 0.2s;
+            cursor: pointer;
+        }
+
+        .dropdown-content a:hover {
+            background-color: rgba(187, 134, 252, 0.1);
+            color: #bb86fc;
+        }
+
+        .dropdown-content a i {
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+        }
+
+        .show {
+            display: block;
+            animation: fadeIn 0.2s ease;
+        }
+    </style>
 </head>
+
 <body>
     <nav class="dock-nav" id="dockNav">
-        <a href="index.html" title="Gameshow"><i class="fas fa-gamepad"></i><span class="tooltip">Gameshow</span></a>
-        <a href="sanpham.html" title="Sản Phẩm"><i class="fas fa-box-archive"></i><span class="tooltip">Sản Phẩm</span></a>
-        <a href="ghichu.html" title="Ghi Chú" class="active"><i class="fas fa-sticky-note"></i><span class="tooltip">Ghi Chú</span></a>
-        <a href="vlog.html" title="Vlog"><i class="fas fa-video"></i><span class="tooltip">Vlog</span></a>
+        <a href="index.html" title="Gameshow"><i class="fas fa-gamepad"></i></a>
+        <a href="sanpham.html" title="Sản Phẩm"><i class="fas fa-box-archive"></i></a>
+        <a href="ghichu.html" title="Ghi Chú"><i class="fas fa-sticky-note"></i></a>
+        <a href="vlog.html" title="Vlog"><i class="fas fa-video"></i></a>
+        <a href="profile.html" title="Cá nhân" class="active"><i class="fas fa-user-astronaut"></i></a>
     </nav>
 
     <main class="main-layout">
@@ -23,29 +73,55 @@
             <header class="archive-header">
                 <div class="header-left">
                     <a href="ghichu.html" class="back-btn"><i class="fas fa-arrow-left"></i> Quay lại</a>
-                    <h1><i class="fas fa-bookmark"></i> Ghi chú đã lưu</h1>
                 </div>
-                
+
                 <div class="sync-group">
                     <button onclick="exportArchivePDF()" class="action-btn pdf-btn" title="Xuất PDF">
                         <i class="fas fa-file-pdf"></i> PDF
                     </button>
-                    <button onclick="downloadBackup()" class="action-btn backup-btn" title="Tải file .json">
-                        <i class="fas fa-download"></i> Sao lưu
-                    </button>
+
+                    <div class="dropdown">
+                        <button class="action-btn toggle-dropdown" onclick="toggleDataMenu(event)">
+                            <i class="fas fa-tools"></i> Tiện ích <i class="fas fa-caret-down"></i>
+                        </button>
+                        <div id="dataMenu" class="dropdown-content">
+                            <a onclick="downloadBackup()">
+                                <i class="fas fa-download"></i> Sao lưu (.json)
+                            </a>
+                            <a onclick="document.getElementById('importFile').click()">
+                                <i class="fas fa-sync-alt"></i> Đồng bộ (Nhập file)
+                            </a>
+                            <hr style="border: 0; border-top: 1px solid #2a2a4e; margin: 5px 0;">
+                            <a onclick="clearAllArchive()" style="color: #ff5252;">
+                                <i class="fas fa-trash-sweep"></i> Xóa toàn bộ data
+                            </a>
+                        </div>
+                    </div>
                     <input type="file" id="importFile" style="display:none" onchange="importBackup(event)">
-                    <button onclick="document.getElementById('importFile').click()" class="action-btn sync-btn" title="Nhập file .json">
-                        <i class="fas fa-sync-alt"></i> Đồng bộ
-                    </button>
                 </div>
             </header>
-            
+
             <div id="archiveGrid" class="note-grid">
-                </div>
+            </div>
         </div>
     </main>
 
     <script src="js/note/ghichu-data.js"></script>
     <script src="js/note/archive.js"></script>
+    <script>
+        // Xử lý đóng/mở menu thả xuống
+        function toggleDataMenu(event) {
+            event.stopPropagation();
+            document.getElementById("dataMenu").classList.toggle("show");
+        }
+
+        window.onclick = function (event) {
+            const menu = document.getElementById("dataMenu");
+            if (menu && menu.classList.contains('show')) {
+                menu.classList.remove('show');
+            }
+        }
+    </script>
 </body>
+
 </html>
