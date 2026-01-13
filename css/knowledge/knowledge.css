@@ -1,5 +1,5 @@
 /* ============================================ */
-/* THEME: DARK PURPLE & NEON (GHI CHÚ) - OPTIMIZED */
+/* THEME: DARK PURPLE & NEON (CLEAN VERSION)    */
 /* ============================================ */
 
 body {
@@ -10,7 +10,7 @@ body {
     padding-bottom: 40px;
 }
 
-/* === 1. Search & Controls Styling === */
+/* === 1. Search & Controls === */
 .search-controls {
     display: flex;
     justify-content: space-between;
@@ -38,46 +38,30 @@ body {
     padding: 0; font-size: 1em; width: 100%; outline: none;
 }
 
-#categorySelect, #difficultySelect {
-    padding: 10px 15px;
-    background: #1e1e38;
-    border: 1px solid #3a3a5e;
-    color: #00ff9d;
-    border-radius: 8px;
-    cursor: pointer;
-    outline: none;
-}
-
 @media (max-width: 600px) {
     .search-controls { flex-direction: column; align-items: stretch; gap: 15px; }
 }
 
-/* === 2. Layout & Sidebar === */
+/* === 2. Layout === */
 .content-wrapper {
     display: flex;
     gap: 20px;
     align-items: flex-start;
 }
 
-.note-grid { flex: 3; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
-
-.favorite-sidebar {
-    flex: 1;
-    background: #1e1e38;
-    border: 1px solid #bb86fc;
-    border-radius: 12px;
-    padding: 15px;
-    position: sticky;
-    top: 20px;
+.note-grid { 
+    flex: 3; 
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+    gap: 25px; 
 }
 
 @media (max-width: 800px) {
     .content-wrapper { flex-direction: column; }
-    .favorite-sidebar { width: 100%; position: static; order: -1; }
     .note-grid { grid-template-columns: 1fr; }
 }
 
-/* === 3. Note Card Styling === */
+/* === 3. Note Card Styling (Accordion) === */
 .note-card {
     background: #1e1e38;
     border: 1px solid #2a2a4e;
@@ -95,7 +79,6 @@ body {
     background: linear-gradient(to bottom, #bb86fc, #00ff9d);
 }
 
-/* Accordion Logic */
 .note-header {
     padding: 15px 20px;
     cursor: pointer;
@@ -104,14 +87,7 @@ body {
     position: relative;
 }
 
-.note-header h3 { margin: 0; font-size: 1.1em; color: #fff; display: flex; align-items: center; gap: 10px; }
-
-.note-header::after {
-    content: '\f078'; font-family: 'Font Awesome 6 Free'; font-weight: 900;
-    position: absolute; right: 20px; color: #bb86fc; transition: 0.3s;
-}
-
-.note-card.open .note-header::after { transform: rotate(180deg); }
+.note-header h3 { margin: 0; font-size: 1.1em; color: #fff; display: block; }
 
 .note-body {
     max-height: 0; overflow: hidden; padding: 0 20px;
@@ -120,530 +96,199 @@ body {
 
 .note-card.open .note-body { max-height: 2000px; padding: 20px; border-top: 1px solid #2a2a4e; }
 
-/* === 4. Code & Tags === */
+/* === 4. Code & Copy === */
 pre {
     background: #0f0f1e;
     padding: 15px;
     border-radius: 8px;
     border: 1px solid #333;
     overflow-x: auto;
+    margin-top: 10px;
 }
 
 code { font-family: 'Consolas', monospace; color: #00ff9d; font-size: 0.9em; }
 
-.diff-tag {
-    font-size: 0.65em; padding: 3px 10px; border-radius: 20px; font-weight: 500;
-}
-.diff-tag.Cơ-bản { background: rgba(0, 255, 157, 0.1); color: #00ff9d; border: 1px solid #00ff9d; }
-.diff-tag.Trung-bình { background: rgba(255, 193, 7, 0.1); color: #ffc107; border: 1px solid #ffc107; }
-.diff-tag.Nâng-cao { background: rgba(255, 82, 82, 0.1); color: #ff5252; border: 1px solid #ff5252; }
+.answer { line-height: 1.6; margin-bottom: 15px; color: #e0d6ff; }
 
-/* === 5. Buttons & Actions === */
-.header-actions { margin-left: auto; margin-right: 35px; display: flex; gap: 15px; }
-
-.fav-btn, .export-single { cursor: pointer; transition: 0.2s; }
-.fav-btn.fas { color: #ff4081; }
-.export-single { color: #00ff9d; }
-
-.action-btn.download-btn {
-    background: linear-gradient(45deg, #00ff9d, #00bcd4);
-    color: #0f0f1e; border: none; padding: 10px 18px; border-radius: 8px;
-    font-weight: bold; cursor: pointer; display: flex; align-items: center; gap: 8px;
-}
-
-/* Favorite Sidebar Items */
-.fav-item {
-    display: flex; justify-content: space-between; padding: 8px;
-    background: rgba(255, 255, 255, 0.05); margin-bottom: 5px; border-radius: 4px;
-}
-.remove-fav { color: #ff5252; cursor: pointer; }
-
-/* Animation */
-.animate-fade-in { animation: fadeIn 0.5s ease forwards; }
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-/* Print */
-@media print {
-    .dock-nav, .search-controls, .favorite-sidebar, .header-actions { display: none !important; }
-    .note-card { border: 1px solid #000; break-inside: avoid; }
-    .note-body { max-height: none !important; display: block !important; }
-}
-/* Nút mở kho lưu trữ */
-.fav-toggle-btn {
-    background: rgba(187, 134, 252, 0.1);
-    color: #bb86fc;
-    border: 1px solid #bb86fc;
-    padding: 8px 15px; /* Thu nhỏ padding */
-    border-radius: 8px; /* Bo góc nhẹ hơn */
-    font-weight: bold;
+.header-actions {
+    margin-left: auto;
+    margin-right: 35px;
     display: flex;
     align-items: center;
-    gap: 8px; /* Khoảng cách giữa icon và số */
+    gap: 15px;
+}
+
+.copy-btn-header { cursor: pointer; transition: 0.2s; color: #00ff9d; font-size: 1.1em; }
+.copy-btn-header:hover { transform: scale(1.2); color: #fff; }
+
+.fav-btn { cursor: pointer; transition: 0.2s; }
+.fav-btn.fas { color: #ff4081; }
+
+/* === 5. Vertical Drawer (Menu Danh Mục) === */
+.menu-all-btn {
+    background: rgba(187, 134, 252, 0.1);
+    color: #bb86fc; border: 1px solid #bb86fc;
+    padding: 10px 18px; border-radius: 8px;
+    cursor: pointer; font-weight: bold;
+    display: flex; align-items: center; gap: 10px;
+}
+
+.vertical-drawer {
+    position: fixed; top: 0; left: -320px; width: 300px; height: 100vh;
+    background: #1e1e38; border-right: 1px solid #bb86fc; z-index: 2000;
+    transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 5px 0 15px rgba(0,0,0,0.5); padding: 20px 0;
+}
+
+.vertical-drawer.open { left: 0; }
+
+.drawer-header {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 0 20px 20px 20px; border-bottom: 1px solid #2a2a4e; color: #bb86fc;
+}
+
+.vertical-main-menu { list-style: none; padding: 10px 0; margin: 0; }
+
+.category-item { border-bottom: 1px solid rgba(255,255,255,0.03); }
+
+.category-link {
+    display: flex; justify-content: space-between;
+    padding: 15px 25px; color: #e0d6ff; cursor: pointer; transition: 0.3s;
+}
+
+.category-link:hover { background: rgba(187, 134, 252, 0.1); color: #bb86fc; }
+
+.vertical-sub-menu {
+    list-style: none; background: #16162d; padding: 0;
+    max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out;
+}
+
+.category-item.open .vertical-sub-menu { max-height: 500px; }
+
+.vertical-sub-menu li a {
+    display: block; padding: 10px 25px 10px 45px;
+    color: #8c78a6; text-decoration: none; font-size: 0.9em;
+}
+
+.vertical-sub-menu li a:hover { color: #00ff9d; }
+
+.drawer-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.6); backdrop-filter: blur(3px);
+    z-index: 1999; display: none;
+}
+.drawer-overlay.show { display: block; }
+
+/* === 6. Archive Link (Nút Kho lưu trữ) === */
+.fav-toggle-btn {
+    background: rgba(187, 134, 252, 0.1);
+    color: #bb86fc; border: 1px solid #bb86fc;
+    padding: 10px 20px; border-radius: 12px;
+    font-weight: 600; display: flex; align-items: center; gap: 10px;
     transition: 0.3s;
 }
 
-/* Modal Overlay */
-.fav-modal {
-    display: none; 
-    position: fixed;
-    z-index: 1000;
-    left: 0; top: 0;
-    width: 100%; height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
-    backdrop-filter: blur(5px);
-}
+.fav-toggle-btn:hover { background: #bb86fc; color: #1a1a2e; }
 
-/* Cửa sổ nội dung */
-.fav-modal-content {
-    background: #1e1e38;
-    margin: 5% auto;
-    padding: 20px;
-    border: 1px solid #bb86fc;
-    width: 90%;
-    max-width: 500px;
-    border-radius: 15px;
-    box-shadow: 0 0 30px rgba(187, 134, 252, 0.3);
-    animation: slideDown 0.3s ease;
-}
+#favCount:not(:empty) { animation: pulse-badge 2s infinite; }
 
-@keyframes slideDown {
-    from { transform: translateY(-50px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
-}
-
-.close-modal {
-    font-size: 28px;
-    cursor: pointer;
-    color: #8c78a6;
-}
-
-.close-modal:hover { color: #ff5252; }
-
-/* Item trong danh sách */
-.fav-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 12px;
-    background: rgba(255, 255, 255, 0.03);
-    border-bottom: 1px solid #2a2a4e;
-    transition: 0.2s;
-}
-
-.fav-item:hover { background: rgba(187, 134, 252, 0.1); }
-
-/* Nút PDF */
-.pdf-btn {
-    background: linear-gradient(45deg, #ff5252, #f44336);
-    color: white;
-    border: none;
-}
-
-/* Thao tác trong kho lưu trữ */
-.fav-actions {
-    display: flex;
-    gap: 15px;
-    align-items: center;
-}
-
-.view-fav {
-    color: #00ff9d;
-    cursor: pointer;
-    font-size: 0.9em;
-    transition: 0.2s;
-}
-
-.view-fav:hover {
-    transform: scale(1.2);
-    text-shadow: 0 0 5px #00ff9d;
-}
-
-/* Ẩn tag độ khó (nếu còn trong data nhưng không muốn hiển thị) */
-.diff-tag {
-    display: none !important;
-}
-
-/* Tối ưu in ấn cho PDF */
-@media print {
-    .note-card {
-        page-break-inside: avoid;
-        margin-bottom: 20px;
-        border: 1px solid #333 !important;
-    }
-    .note-body {
-        max-height: none !important;
-        display: block !important;
-    }
-}
-
-
-.sync-group {
-    display: flex;
-    gap: 10px;
-}
-
-.backup-btn {
-    background: rgba(0, 255, 157, 0.1) !important;
-    color: #00ff9d !important;
-    border: 1px solid #00ff9d !important;
-}
-
-.backup-btn:hover {
-    background: #00ff9d !important;
-    color: #0f0f1e !important;
-}
-
-.sync-btn {
-    background: rgba(0, 188, 212, 0.1) !important;
-    color: #00bcd4 !important;
-    border: 1px solid #00bcd4 !important;
-}
-
-.sync-btn:hover {
-    background: #00bcd4 !important;
-    color: #0f0f1e !important;
-}
-
-/* Tối ưu PDF button đã có */
-.pdf-btn {
-    background: rgba(255, 82, 82, 0.1) !important;
-    color: #ff5252 !important;
-    border: 1px solid #ff5252 !important;
-}
-
-.pdf-btn:hover {
-    background: #ff5252 !important;
-    color: #fff !important;
-}
-
-@media (max-width: 800px) {
-    .sync-group {
-        width: 100%;
-        justify-content: space-between;
-    }
-    .sync-group .action-btn {
-        flex: 1;
-        justify-content: center;
-    }
-}
-/* Tùy chỉnh nhóm nút điều hướng phụ */
-.sync-group {
-    display: flex;
-    align-items: center;
-}
-
-/* Nút Kho lưu trữ - Phong cách Neon Purple */
-.fav-toggle-btn {
-    position: relative;
-    background: rgba(187, 134, 252, 0.1); /* Màu tím nhạt trong suốt */
-    color: #bb86fc;
-    border: 1px solid #bb86fc;
-    padding: 10px 20px;
-    border-radius: 12px;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    box-shadow: 0 4px 15px rgba(187, 134, 252, 0.1);
-}
-
-/* Hiệu ứng khi di chuột (Hover) */
-.fav-toggle-btn:hover {
-    background: #bb86fc;
-    color: #1a1a2e;
-}
-
-/* Hiệu ứng Icon bên trong */
-.fav-toggle-btn i {
-    font-size: 1.1em;
-    transition: transform 0.3s ease;
-}
-
-.fav-toggle-btn:hover i {
-    transform: scale(1.2) rotate(-10deg);
-}
-
-/* Badge số lượng ghi chú (favCount) */
-#favCount {
-    /* Loại bỏ background badge hồng rườm rà, chỉ để số thuần túy */
-    font-size: 1em;
-    background: none;
-    padding: 0;
-    box-shadow: none;
-    animation: none; /* Tắt hiệu ứng nhấp nháy nếu muốn đơn giản tuyệt đối */
-}
-
-/* Hiệu ứng nhấp nháy nhẹ cho Badge khi có ghi chú mới */
 @keyframes pulse-badge {
     0% { transform: scale(1); }
     50% { transform: scale(1.1); }
     100% { transform: scale(1); }
 }
 
-#favCount:not(:empty) {
-    animation: pulse-badge 2s infinite;
+/* === 7. Utility & Animation === */
+.animate-fade-in { animation: fadeIn 0.5s ease forwards; }
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
-/* Responsive cho mobile */
-@media (max-width: 600px) {
-    .fav-toggle-btn {
-        width: 100%;
-        justify-content: center;
-        padding: 12px;
-    }
+@media print {
+    .menu-toggle-btn, .search-controls, .header-actions { display: none !important; }
+    .note-card { border: 1px solid #000; break-inside: avoid; }
+    .note-body { max-height: none !important; display: block !important; }
 }
-
-
-/* Đảm bảo menu con có style giống menu chính */
-#subCategorySelect {
-    padding: 10px 15px;
-    background: #1e1e38;
-    border: 1px solid #3a3a5e;
-    color: #bb86fc; /* Màu khác một chút để phân biệt */
-    border-radius: 8px;
-    cursor: pointer;
-    outline: none;
-}
-
-/* Loại bỏ hoàn toàn hiển thị difficulty nếu còn sót */
-.diff-tag, #difficultySelect {
-    display: none !important;
-}
-/* Chỉ giữ container định vị cho code snippet */
-.code-snippet {
-    position: relative;
-}
-
-/* Nút Copy cho Code */
-.copy-btn {
-    position: absolute;
-    top: 8px;
-    right: 8px;
-    background: rgba(187, 134, 252, 0.1);
-    color: #bb86fc;
-    border: 1px solid rgba(187, 134, 252, 0.3);
-    padding: 5px 10px;
-    border-radius: 6px;
-    font-size: 0.85em;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    z-index: 5;
-}
-
-.copy-btn:hover {
-    background: #bb86fc;
-    color: #1a1a2e;
-}
-
-/* Trả lại padding tự nhiên cho phần câu trả lời */
-.answer {
-    padding-right: 0; 
-    line-height: 1.6;
-    margin-bottom: 15px;
-}
-
-/* Đảm bảo code không bị đè */
-pre {
-    padding-top: 40px !important;
-}
-/* ==================== MODERN 2-LEVEL MENU ==================== */
-.category-nav {
-    background: #1e1e38;
-    border: 1px solid #3a3a5e;
-    border-radius: 8px;
-    position: relative;
-    z-index: 100;
-}
-
-.main-menu {
-    list-style: none;
-    display: flex;
-    margin: 0;
-    padding: 0;
-}
-
-.menu-item {
-    position: relative;
-}
-
-.menu-link {
-    display: block;
-    padding: 12px 20px;
-    color: #e0d6ff;
-    text-decoration: none;
-    font-weight: 500;
-    transition: 0.3s;
-    cursor: pointer;
-    white-space: nowrap;
-}
-
-.menu-item:hover > .menu-link {
-    color: #bb86fc;
-    background: rgba(187, 134, 252, 0.1);
-}
-
-/* Cấp 2: Dropdown */
-.sub-menu {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background: #1e1e38;
-    border: 1px solid #bb86fc;
-    box-shadow: 0 8px 16px rgba(0,0,0,0.5);
-    min-width: 200px;
-    display: none;
-    list-style: none;
-    padding: 5px 0;
-    border-radius: 0 0 8px 8px;
-    animation: fadeIn 0.2s ease;
-}
-
-.menu-item:hover .sub-menu {
-    display: block;
-}
-
-.sub-menu li a {
-    padding: 10px 20px;
-    display: block;
-    color: #e0d6ff;
-    text-decoration: none;
-    font-size: 0.9em;
-}
-
-.sub-menu li a:hover {
-    background: #bb86fc;
-    color: #1a1a2e;
-}
-
-/* Trạng thái Active */
-.menu-item.active > .menu-link {
-    border-bottom: 2px solid #00ff9d;
-    color: #00ff9d;
-}
-
-@media (max-width: 768px) {
-    .main-menu { flex-direction: column; }
-    .sub-menu { position: static; box-shadow: none; border-left: 2px solid #bb86fc; }
-}
-/* Nút Tất cả */
-.menu-all-btn {
-    background: rgba(187, 134, 252, 0.1);
-    color: #bb86fc;
-    border: 1px solid #bb86fc;
-    padding: 10px 18px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    transition: 0.3s;
-}
-
-.menu-all-btn:hover {
-    background: #bb86fc;
-    color: #1a1a2e;
-}
-
-/* Vertical Drawer (Menu dọc) */
-.vertical-drawer {
-    position: fixed;
-    top: 0;
-    left: -320px; /* Ẩn sang trái */
-    width: 300px;
-    height: 100vh;
-    background: #1e1e38;
-    border-right: 1px solid #bb86fc;
-    z-index: 2000;
-    transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 5px 0 15px rgba(0,0,0,0.5);
-    padding: 20px 0;
-}
-
-.vertical-drawer.open {
-    left: 0;
-}
-
-.drawer-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 20px 20px 20px;
-    border-bottom: 1px solid #2a2a4e;
-    color: #bb86fc;
-}
-
-.drawer-header h4 { margin: 0; text-transform: uppercase; letter-spacing: 1px; }
-
+/* Tùy chỉnh nút X trong Drawer */
 #closeDrawer {
-    background: none; border: none; color: #8c78a6;
-    font-size: 24px; cursor: pointer;
-}
-
-/* Menu 2 tầng bên trong drawer */
-.vertical-main-menu {
-    list-style: none; padding: 10px 0; margin: 0;
-}
-
-.category-item {
-    border-bottom: 1px solid rgba(255,255,255,0.03);
-}
-
-.category-link {
+    background: rgba(187, 134, 252, 0.1); /* Nền tím nhạt đồng bộ */
+    border: 1px solid #bb86fc;
+    color: #bb86fc;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%; /* Bo tròn */
     display: flex;
-    justify-content: space-between;
-    padding: 15px 25px;
-    color: #e0d6ff;
-    text-decoration: none;
-    font-weight: 500;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
     cursor: pointer;
-    transition: 0.3s;
-}
-
-.category-link:hover { background: rgba(187, 134, 252, 0.1); color: #bb86fc; }
-
-/* Sub-menu hiển thị dạng thụt đầu dòng */
-.vertical-sub-menu {
-    list-style: none;
-    background: #16162d;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    outline: none;
     padding: 0;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease-out;
 }
 
-.category-item.open .vertical-sub-menu {
-    max-height: 500px;
+#closeDrawer:hover {
+    background: #ff5252; /* Chuyển sang màu đỏ khi hover */
+    border-color: #ff5252;
+    color: #fff;
+    transform: rotate(90deg); /* Xoay nhẹ tạo hiệu ứng động */
+}
+/* Container Modal chính */
+.note-modal {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: 3000;
+    display: none; /* Ẩn mặc định */
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
 }
 
-.category-item.open .fa-chevron-right {
-    transform: rotate(90deg);
+/* Hiển thị Modal khi có class open */
+.note-modal.show { display: flex; }
+
+/* Lớp phủ nền mờ */
+.modal-overlay {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(10, 10, 20, 0.85);
+    backdrop-filter: blur(8px);
 }
 
-.vertical-sub-menu li a {
-    display: block;
-    padding: 10px 25px 10px 45px;
-    color: #8c78a6;
-    text-decoration: none;
-    font-size: 0.9em;
-    transition: 0.2s;
+/* Khung nội dung */
+.modal-content {
+    position: relative;
+    background: #1e1e38;
+    width: 100%;
+    max-width: 800px;
+    max-height: 90vh;
+    border: 1px solid #bb86fc;
+    border-radius: 20px;
+    padding: 30px;
+    overflow-y: auto;
+    box-shadow: 0 0 30px rgba(187, 134, 252, 0.2);
 }
 
-.vertical-sub-menu li a:hover { color: #00ff9d; background: rgba(0, 255, 157, 0.05); }
-
-/* Overlay (Lớp phủ làm mờ nền) */
-.drawer-overlay {
-    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0,0,0,0.6);
-    backdrop-filter: blur(3px);
-    z-index: 1999;
-    display: none;
+/* Nút đóng Modal */
+.modal-close-btn {
+    position: absolute;
+    top: 15px; right: 15px;
+    background: none; border: none;
+    color: #8c78a6; font-size: 2rem;
+    cursor: pointer; z-index: 10;
 }
 
-.drawer-overlay.show { display: block; }
+.modal-close-btn:hover { color: #ff5252; }
+
+/* Animation cho Modal */
+.animate-pop-in {
+    animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes popIn {
+    from { opacity: 0; transform: scale(0.8); }
+    to { opacity: 1; transform: scale(1); }
+}

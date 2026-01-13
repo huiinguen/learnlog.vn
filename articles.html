@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Chia Sẻ - Kiến Thức & Tin Tức</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/articles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body class="blog-dark-theme">
+    <button class="menu-toggle-btn" id="menuToggleBtn" title="Mở Menu">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <nav class="sidebar-menu" id="sidebarMenu">
+        <div class="sidebar-header">
+            <h3>Hệ Thống</h3>
+            <button class="menu-close-btn" id="menuCloseBtn" title="Đóng">&times;</button>
+        </div>
+        <ul class="sidebar-links">
+            <li><a href="index.html" class="sidebar-link"><i class="fas fa-gamepad"></i> Gameshow</a></li>
+            <li><a href="sanpham.html" class="sidebar-link"><i class="fas fa-box-archive"></i> Sản Phẩm</a></li>
+            <li><a href="knowledge.html" class="sidebar-link"><i class="fas fa-sticky-note"></i> Kiến thức</a></li>
+            <li><a href="articles.html" class="sidebar-link"><i class="fas fa-newspaper"></i> Bài viết</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <div class="article-controls">
+            <div class="search-bar">
+                <i class="fas fa-search"></i>
+                <input type="text" id="articleSearch" placeholder="Tìm kiếm tiêu đề bài viết...">
+            </div>
+
+            <div class="filter-menu">
+                <label for="articleSort">Sắp xếp:</label>
+                <select id="articleSort">
+                    <option value="newest">Mới nhất</option>
+                    <option value="oldest">Cũ nhất</option>
+                </select>
+            </div>
+        </div>
+
+        <div id="articleGrid" class="article-grid">
+            <div class="loading-text">Đang tải dữ liệu bài viết...</div>
+        </div>
+    </main>
+
+    <div id="articleModal" class="full-modal">
+        <div class="modal-bg-overlay" id="modalBg"></div>
+        <div class="modal-content-box animate-pop-in">
+            <div class="modal-actions-top">
+                <button class="btn-action-copy" id="modalCopyBtn" title="Sao chép liên kết">
+                    <i class="far fa-copy"></i>
+                </button>
+                <button class="btn-close-modal" id="closeBtn" title="Đóng bài viết">&times;</button>
+            </div>
+
+            <div id="modalBody" class="post-detail-content">
+            </div>
+        </div>
+    </div>
+
+    <div id="toast" class="toast">
+        <i class="fas fa-check-circle"></i> Đã sao chép liên kết bài viết!
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/articles/article-data.js"></script>
+    <script src="js/articles/articles.js"></script>
+</body>
+
+</html>

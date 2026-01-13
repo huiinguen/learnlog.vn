@@ -33,7 +33,7 @@ var allProducts = [
     id: 2,
     name: "TDS TIKTOK,FB",
     price: 0,
-    images_gallery: ["images/flappybird_code.jpg"],
+
     category: "Tài Nguyên",
     subCategory: "Tool",
     resourceLink:
@@ -112,7 +112,7 @@ var allProducts = [
     id: 10,
     name: "SoundCloud",
     price: 0,
-    images_gallery: ["images/"],
+
     category: "Tài Nguyên",
     subCategory: "Mod(app,module...)",
     resourceLink:
@@ -132,7 +132,7 @@ var allProducts = [
     id: 12,
     name: "meitu module",
     price: 0,
-    images_gallery: ["images/"],
+
     category: "Tài Nguyên",
     subCategory: "Mod(app,module...)",
     resourceLink:
@@ -142,7 +142,7 @@ var allProducts = [
     id: 13,
     name: "Lightroom 2",
     price: 0,
-    images_gallery: ["images/"],
+
     category: "Tài Nguyên",
     subCategory: "Mod(app,module...)",
     description: "cre: whatshub",
@@ -152,7 +152,7 @@ var allProducts = [
     id: 14,
     name: "Lightroom",
     price: 0,
-    images_gallery: ["images/"],
+
     category: "Tài Nguyên",
     subCategory: "Mod(app,module...)",
     resourceLink:
@@ -162,7 +162,7 @@ var allProducts = [
     id: 15,
     name: "Kho Ipa vn",
     price: 0,
-    images_gallery: ["images/"],
+
     category: "Tài Nguyên",
     subCategory: "Mod(app,module...)",
     resourceLink: "https://ios.codevn.net/",
@@ -171,7 +171,6 @@ var allProducts = [
     id: 16,
     name: "python(pdf)",
     price: 0,
-    images_gallery: ["images/"],
     category: "Học Tập",
     subCategory: "Lập trình python",
     resourceLink:
@@ -181,7 +180,6 @@ var allProducts = [
     id: 17,
     name: "Tổng hợp python,c,php,java,...",
     price: 0,
-    images_gallery: ["images/"],
     category: "Học Tập",
     resourceLink:
       "https://github.com/orgs/TheAlgorithms/repositories?q=sort%3Astars&utm_source=j2team&utm_medium=url_shortener&utm_campaign=The-Algorithms",
@@ -190,7 +188,6 @@ var allProducts = [
     id: 18,
     name: "kho phần mềm",
     price: 0,
-    images_gallery: ["images/"],
     category: "Tài Nguyên",
     subCategory: "Mod(app,module...)",
     resourceLink: "https://www.hoanghaopc.com/trang-ch%E1%BB%A7",
@@ -199,7 +196,6 @@ var allProducts = [
     id: 19,
     name: "KHÓA HỌC HUY QUẦN HOA",
     price: 0,
-    images_gallery: ["images/"],
     category: "Học Tập",
     subCategory: "Khóa học",
     resourceLink:
@@ -209,7 +205,6 @@ var allProducts = [
     id: 20,
     name: "khóa reup tiktok",
     price: 0,
-    images_gallery: ["images/"],
     category: "Học Tập",
     subCategory: "Khóa học",
     resourceLink:
@@ -219,7 +214,6 @@ var allProducts = [
     id: 21,
     name: "c/c++",
     price: 0,
-    images_gallery: ["images/"],
     category: "Học Tập",
     subCategory: "Lập trình c/c++",
     resourceLink:
@@ -229,7 +223,6 @@ var allProducts = [
     id: 22,
     name: "câu hỏi javascript",
     price: 0,
-    images_gallery: ["images/"],
     category: "Học Tập",
     subCategory: "Lập trình java",
     resourceLink:
@@ -239,7 +232,6 @@ var allProducts = [
     id: 23,
     name: "kho thuật toán c++",
     price: 0,
-    images_gallery: ["images/"],
     category: "Học Tập",
     subCategory: "Lập trình c/c++",
     resourceLink:
@@ -249,7 +241,6 @@ var allProducts = [
     id: 24,
     name: "Mod capcut ipa",
     price: 0,
-    images_gallery: ["images/"],
     category: "Tài Nguyên",
     subCategory: "Mod(app,module...)",
     description:
@@ -260,7 +251,6 @@ var allProducts = [
     id: 27,
     name: "Tool full tính năng cho IT(web)",
     price: 0,
-    images_gallery: ["images/"],
     category: "Tài Nguyên",
     subCategory: "Tool",
     description:
@@ -271,7 +261,6 @@ var allProducts = [
     id: 28,
     name: "sourcode tool full tính năng IT",
     price: 0,
-    images_gallery: ["images/"],
     category: "Học Tập",
     resourceLink: "https://github.com/CorentinTh/it-tools/tree/main",
   },
@@ -289,7 +278,6 @@ var allProducts = [
     id: 32,
     name: "khóa học capcut",
     price: 0,
-    images_gallery: ["images/"],
     category: "Học Tập",
     subCategory: "Khóa học",
     resourceLink:
@@ -318,7 +306,6 @@ var allProducts = [
     id: 37,
     name: "Khóa học shoppe",
     price: 0,
-    images_gallery: ["images/"],
     category: "Học Tập",
     subCategory: "Khóa học",
     resourceLink:
@@ -328,7 +315,6 @@ var allProducts = [
     id: 39,
     name: "Ksign,Esign,...bypass",
     price: 0,
-    images_gallery: ["images/"],
     category: "Tài Nguyên",
     subCategory: "Mod(app,module...)",
     resourceLink: "https://khoindvn.io.vn/",
@@ -337,7 +323,6 @@ var allProducts = [
     id: 40,
     name: "Chạy quảng cáo tiktok",
     price: 0,
-    images_gallery: ["images/"],
     category: "Học Tập",
     subCategory: "Khóa học",
     resourceLink:
@@ -347,7 +332,6 @@ var allProducts = [
     id: 41,
     name: "tiktok shop ",
     price: 0,
-    images_gallery: ["images/"],
     category: "Học Tập",
     subCategory: "Khóa học",
     resourceLink:
@@ -357,7 +341,6 @@ var allProducts = [
     id: 42,
     name: "Học java",
     price: 0,
-    images_gallery: ["images/flappybird_code.jpg"],
     category: "Học Tập",
     subCategory: "Lập trình java",
     resourceLink:
@@ -367,7 +350,6 @@ var allProducts = [
     id: 43,
     name: 'sourcode mục "học java"',
     price: 0,
-    images_gallery: ["images/flappybird_code.jpg"],
     category: "Học Tập",
     subCategory: "Lập trình java",
     resourceLink:
@@ -377,7 +359,6 @@ var allProducts = [
     id: 44,
     name: "học python",
     price: 0,
-    images_gallery: ["images/flappybird_code.jpg"],
     category: "Học Tập",
     subCategory: "Lập trình python",
     resourceLink:
@@ -397,7 +378,6 @@ var allProducts = [
     id: 46,
     name: "KHÓA HỌC CHAT GPT",
     price: 0,
-    images_gallery: ["images/"],
     category: "Học Tập",
     subCategory: "Khóa học",
     resourceLink:
@@ -550,7 +530,7 @@ var allProducts = [
     id: 63,
     name: "Tool C++ CMD BOX",
     price: 0,
-    images_gallery: ["images/flappybird_code.jpg"],
+
     category: "Tài Nguyên",
     subCategory: "Tool",
     resourceLink:
@@ -563,7 +543,6 @@ var allProducts = [
     id: 64,
     name: "Tổng hợp 300 Prompt đa năng",
     price: 0,
-    images_gallery: ["images/flappybird_code.jpg"],
     category: "Tài Nguyên",
     subCategory: "Prompt AI",
     resourceLink:
@@ -595,7 +574,10 @@ var allProducts = [
     id: 67,
     name: "Cấu hình chặn quảng cáo iphone",
     price: 0,
-    images_gallery: ["https://res.cloudinary.com/dxcuzqm9m/image/upload/v1766757153/11_ggfg4h.jpg", "https://res.cloudinary.com/dxcuzqm9m/image/upload/v1766757153/10_wpj2lk.jpg"],
+    images_gallery: [
+      "https://res.cloudinary.com/dxcuzqm9m/image/upload/v1766757153/11_ggfg4h.jpg",
+      "https://res.cloudinary.com/dxcuzqm9m/image/upload/v1766757153/10_wpj2lk.jpg",
+    ],
     category: "Tài Nguyên",
     subCategory: "Mod(app,module...)",
     resourceLink: "https://www.mediafire.com/file/mp73j9qvevt2hdq",
@@ -614,7 +596,6 @@ var allProducts = [
     id: 73,
     name: "Office tool",
     price: 0,
-    images_gallery: ["images/flappybird_code.jpg"],
     category: "Tài Nguyên",
     subCategory: "Tool",
     resourceLink: "",
@@ -623,7 +604,6 @@ var allProducts = [
     id: 74,
     name: "Crask app",
     price: 0,
-    images_gallery: ["images/flappybird_code.jpg"],
     category: "Tài Nguyên",
     subCategory: "Tool",
     resourceLink: "",
@@ -633,7 +613,6 @@ var allProducts = [
     id: 75,
     name: "Tool chống lỗi cài win",
     price: 0,
-    images_gallery: ["images/flappybird_code.jpg"],
     category: "Tài Nguyên",
     subCategory: "Tool",
     functions: "chống lỗi ẩn ổ cứng khi cài win",
@@ -652,9 +631,8 @@ var allProducts = [
   },
   {
     id: 78,
-    name: "Excel",
+    name: "Học Excel",
     price: 0,
-    images_gallery: ["images/"],
     category: "Học Tập",
     subCategory: "Excel",
     resourceLink:
@@ -664,7 +642,6 @@ var allProducts = [
     id: 79,
     name: "CAPCUT MOD PC/LAP",
     price: 0,
-    images_gallery: ["images/locket.jpg"],
     category: "Tài Nguyên",
     subCategory: "Mod(app,module...)",
     resourceLink: "https://capcut.vi.uptodown.com/windows/dw/91204437",
@@ -674,11 +651,28 @@ var allProducts = [
     id: 81,
     name: "Lập trình giao diện c++ bằng MFC",
     price: 0,
-    images_gallery: ["images/locket.jpg"],
     category: "Học Tập",
     subCategory: "Lập trình c/c++",
     resourceLink:
       "https://www.youtube.com/playlist?list=PLfszubEEhakf7mGTDjsImyp-YGU69_S5k",
+  },
+
+  {
+    id: 82,
+    name: "9 tuần học java",
+    price: 0,
+    category: "Học Tập",
+    subCategory: "Lập trình java",
+    resourceLink: "https://github.com/hit-haui/Java-HIT-2019",
+  },
+
+  {
+    id: 83,
+    name: "Tổng hợp tài liệu lập trình",
+    price: 0,
+    category: "Học Tập",
+    resourceLink:
+      "https://github.com/tmsanghoclaptrinh/tai-lieu-lap-trinh-tieng-viet-mien-phi",
   },
 ];
 

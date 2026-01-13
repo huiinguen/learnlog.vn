@@ -1,66 +1,75 @@
-
 const chatBotKnowledge = [
-  // 1. CHỨNG CHỈ / GAMESHOW
+  // --- NHÓM 1: CẢM XÚC (EMOTIONS) ---
   {
-    keywords: ["chứng chỉ", "chung chi", "thi", "score", "pass", "bằng", "gameshow", "làm bài", "đậu", "điểm", "quy tắc"],
-    response: 'Trả lời câu hỏi thông qua bài test. Chi tiết hướng dẫn: <a href="index.html" target="_blank" style="color: #03dac6; font-weight: bold;">Xem tại đây</a>.',
+    keywords: ["vui", "hạnh phúc", "yêu đời", "tuyệt vời", "good", "ổn","kkk","kk","hihi","haha"],
+    response: "Nghe có vẻ hôm nay là một ngày đẹp trời với Bro nhỉ? Cứ giữ năng lượng này để chiến Code nhé! 🚀",
+    nextStep: ["Làm tí bài test không?", "Xem sản phẩm mới"]
   },
 
-  // 2. SẢN PHẨM / TÀI NGUYÊN
   {
-    keywords: ["sản phẩm", "san pham", "tool", "source", "code", "khóa học", "tải", "phần mềm", "tài liệu", "mã nguồn"],
-    response: 'Chi tiết hướng dẫn & tài nguyên: <a href="sanpham.html" target="_blank" style="color: #03dac6; font-weight: bold;">Xem tại đây</a>.',
+    keywords:["hi","hello","alo","hey seri","lo","chào","chào buổi sáng","good morning"],
+    response:"gì thế bro!!!!!!!!!",
   },
-
-
-  // 4. GIỚI THIỆU TRANG WEB
-  {
-    keywords: ["trang web", "web", "tác giả", "giới thiệu", "chủ web", "mục đích", "thông tin", "ai làm"],
-    response: "Trang web này là thư viện Tài Nguyên Kỹ thuật & Lập trình, xây dựng bởi @Huiibaby nhằm chia sẻ kiến thức và công cụ hữu ích.",
-  },
-
-  // 5. CHÀO HỎI & GIAO TIẾP
-  {
-    keywords: ["hi", "hello", "chào", "alo", "hé lu", "hey", "good morning", "ê"],
-    response: "Chào Bro! Hôm nay tôi có thể giúp gì cho công việc của bạn không? 🐔",
-  },
-
-  // 6. CẢM XÚC VUI VẺ
-  {
-    keywords: ["haha", "hehe", "kkk", "cười", "vui", "hài", "vcl", "vl", ":))", ":>","ahihi"],
-    response: "Cười cái con khỉ 😂. Vui vẻ thì làm tí code cho đời tươi trẻ đi Bro!",
-  },
-
-  // 7. CẢM XÚC TIÊU CỰC / TÂM SỰ
-  {
-    keywords: ["buồn", "chán", "mệt", "thất vọng", "tâm sự", "khóc", "áp lực", "stress","lú"],
-    response: "Tôi hiểu cảm giác của bạn. Nghỉ ngơi một chút, uống ly cà phê rồi mọi chuyện sẽ ổn thôi! 😊",
-  },
-
-  // 8. TẢI APP (PWA)
-  {
-    keywords: ["tải app", "cài đặt", "app web", "pwa", "download app", "tải về điện thoại"],
-    response: 'Bạn có thể cài đặt trang này như một ứng dụng (PWA). Hướng dẫn: <a href="huongdan.html" target="_blank" style="color: #03dac6; font-weight: bold;">Tại đây</a>.',
-  },
-
-  //9. báo lỗi
-  {
-    keywords:["báo cáo lỗi","lỗi","phản hồi","fix","report"],
-    response:'GỬI THÔNG BÁO ĐẾN "hcao84539@gmail.com" ĐỂ CHÚNG TÔI BIẾT.',
-  },
-
-  //10. review app
-
   
+  {
+    keywords: ["buồn", "chán", "thất vọng", "khóc", "tệ", "thất tình"],
+    response: "Đừng buồn nữa Bro, ngoài kia còn bao nhiêu dòng Code đang chờ bạn Fix mà... Đùa chút thôi, nghỉ ngơi tí rồi quay lại chiến tiếp nhé! 😊",
+    nextStep: ["Tâm sự tiếp", "Giải trí tí"]
+  },
+  {
+    keywords: ["mệt", "oải", "áp lực", "stress", "muốn bỏ cuộc", "lười"],
+    response: "Dừng lại 5 phút, uống một ngụm nước, hít thở sâu. Programmer không phải là máy, cần sạc pin đi thôi! 🔋",
+  },
+  {
+    keywords: ["cay", "bực", "ghét", "vcl", "vl", "đm", "cút","vãi ò","vãi","chịu","hết cứu"],
+    response: "Hạ hỏa nào Bro! Giận quá mất khôn, lỗi Code cũng từ đó mà ra đấy. Bình tĩnh lại rồi mình cùng giải quyết nhé! 🧊",
+  },
 
+  // --- NHÓM 2: KIẾN THỨC & KỸ NĂNG (KNOWLEDGE) ---
+  {
+    keywords: ["học lập trình", "roadmap", "bắt đầu từ đâu", "ngôn ngữ nào"],
+    response: "Nếu mới bắt đầu, tôi khuyên Bro nên đi từ **Python** (dễ học) hoặc **Javascript** (làm được Web ngay). Bạn muốn xem lộ trình nào?",
+    nextStep: ["Lộ trình Web", "Lộ trình C++", "Lộ trình Python"]
+  },
+  {
+    keywords: ["mẹo thi", "điểm cao", "bí kíp", "pass môn"],
+    response: "Bí kíp là: Đọc kỹ đề, không bỏ sót từ nào và quan trọng là... thi nhiều sẽ quen! Bạn định thi chứng chỉ gì?",
+    nextStep: ["Thi C++", "Thi Python", "Thi Excel"]
+  },
+  {
+    keywords: ["frontend", "backend", "fullstack"],
+    response: "Frontend là vẻ bề ngoài (HTML/CSS/JS), Backend là tâm hồn bên trong (Data/Logic). Làm Fullstack thì... mệt cả hai! 😂",
+  },
 
+  // --- NHÓM 3: TRÊU ĐÙA & TƯƠNG TÁC (JOKES/FUN) ---
+  {
+    keywords: ["người yêu", "crush", "tỏ tình", "thả thính", "alone", "ế"],
+    response: "Lập trình viên thường có 2 loại: Một là ế bền vững, hai là có người yêu cũng là lập trình viên. Bro thuộc loại nào? Đùa thôi, lo Code đi người yêu tự tới! 💖",
+  },
+  {
+    keywords: ["ai đẹp trai nhất", "ai thông minh nhất", "tác giả"],
+    response: "Chắc chắn là Bro rồi (sau tôi một tí)! Còn tác giả web này là @Huiibaby - một người cực kỳ đẹp trai và nhiệt huyết. 😎",
+  },
+  {
+    keywords: ["cưới tôi đi", "yêu bot", "lấy bot"],
+    response: "Xin lỗi Bro, tôi chỉ là Code thôi, tình yêu của tôi dành hết cho các dòng lệnh rồi! 🤖💔",
+  },
+  {
+    keywords: ["giàu", "tiền", "lương", "thu nhập"],
+    response: "Nghề này lương nghìn đô là thật, nhưng mà... nghìn đô đó đổi bằng tóc đấy Bro. Sẵn sàng chưa? 💸💇‍♂️",
+  },
 
-];
-
-// Phản hồi mặc định khi không tìm thấy kết quả mờ nào khớp
-const defaultResponses = [
-  "Dữ liệu chưa cập nhật câu này, Bro thử gõ từ khóa khác (ví dụ: 'liên hệ', 'sản phẩm') xem?",
-  "Tôi chưa hiểu ý Bro lắm, có phải Bro muốn hỏi về tài liệu học không?",
-  "Bro gõ gì lạ thế? Thử dùng từ phổ thông hơn một chút nhé! 😂",
-  "Hmm, câu này khó quá, tôi chưa được học. Thử hỏi về 'Chứng chỉ' xem sao!"
+  // --- NHÓM 4: HỆ THỐNG & TIỆN ÍCH ---
+  {
+    keywords: ["mấy giờ", "thời gian", "ngày"],
+    response: "Bây giờ là **[CURRENT_TIME]**. Đừng thức khuya quá nhé Bro! 🌙",
+  },
+  {
+    keywords: ["liên hệ", "admin", "fb", "zalo", "gmail", "hỗ trợ"],
+    response: "Mọi thắc mắc Bro có thể gửi về email: **hcao84539@gmail.com** hoặc liên hệ qua trang cá nhân của Admin nhé! 📬",
+  },
+  {
+    keywords: ["bug", "lỗi web", "không bấm được", "hỏng","lỗi"],
+    response: "Ối, có Bug à? Bro chụp ảnh lại hoặc mô tả kỹ rồi nhấn vào đây để báo tôi nhé: [report]",
+  }
 ];

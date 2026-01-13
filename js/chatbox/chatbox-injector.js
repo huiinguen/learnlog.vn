@@ -1,24 +1,29 @@
 // js/chatbox/chatbox-injector.js
-
 document.addEventListener('DOMContentLoaded', () => {
     async function loadChatbox() {
         try {
-            // 1. Tải cấu trúc HTML từ file rời
             const response = await fetch('chatbox.html');
             if (!response.ok) throw new Error('Không thể tải file chatbox.html');
             const htmlContent = await response.text();
             document.body.insertAdjacentHTML('beforeend', htmlContent);
 
-            // 2. Nhúng CSS vào Head
-            const link = document.createElement('link');
-            link.rel = 'stylesheet';
-            link.href = 'css/chatbox.css';
-            document.head.appendChild(link);
+            // Các thư viện bổ trợ
+            const externalLibs = [
+                'https://cdn.jsdelivr.net/npm/fuse.js@6.6.2', // Tìm kiếm mờ
+                'https://cdn.jsdelivr.net/npm/marked/marked.min.js', // Render Markdown
+                'https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js' // Pháo hoa
+            ];
 
-            // 3. Danh sách Script cần nạp theo thứ tự
-            // Nạp ghichu-data trước để Logic có thể truy cập dữ liệu ghi chú
+            // Nạp thư viện ngoài trước
+            for (const lib of externalLibs) {
+                await new Promise(r => {
+                    const s = document.createElement('script'); s.src = lib; s.onload = r;
+                    document.head.appendChild(s);
+                });
+            }
+
+            // Nạp logic nội bộ
             const scripts = [
-                'js/note/ghichu-data.js',
                 'js/chatbox/chatbox-data.js',
                 'js/chatbox/chatbox-logic.js'
             ];
@@ -26,13 +31,8 @@ document.addEventListener('DOMContentLoaded', () => {
             for (const src of scripts) {
                 await new Promise((resolve) => {
                     const script = document.createElement('script');
-                    script.src = src;
-                    script.async = false; // Đảm bảo thực thi đúng thứ tự nạp
+                    script.src = src; script.async = false;
                     script.onload = resolve;
-                    script.onerror = () => {
-                        console.warn(`Bỏ qua file không tồn tại: ${src}`);
-                        resolve();
-                    };
                     document.body.appendChild(script);
                 });
             }
@@ -40,6 +40,5 @@ document.addEventListener('DOMContentLoaded', () => {
             console.error('Lỗi khởi tạo Chatbox:', error);
         }
     }
-
     loadChatbox();
 });

@@ -124,97 +124,52 @@ body {
     margin: 20px 0;
 }
 
-/* Price Section */
-.price-block {
-    margin: 15px 0;
-    padding: 10px 0;
-}
 
-.product-price {
-    font-size: 1.6em;
-    font-weight: bold;
-    margin: 5px 0;
-}
-
-.product-price.sale-price {
-    color: #ff79c6;
-    font-size: 2em;
-}
-
-.product-price.sale-price span {
-    color: #ff79c6;
-}
-
-.product-price.original-price.on-sale {
-    font-size: 1.1em;
-    font-weight: normal;
-    color: #777;
-    text-decoration: line-through;
-}
-
-.product-price.price-free span {
-    font-size: 1.5em;
-    color: #bb86fc;
-}
-
-/* Countdown Timer */
-.sale-countdown {
-    margin-top: 10px;
-    font-size: 0.9em;
-    font-weight: bold;
-    padding: 8px 12px;
-    background-color: #3a1a3a;
-    border-radius: 4px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    color: #ff79c6;
-    border: 1px solid #2a2a4e;
-}
-
-.sale-countdown span {
-    background-color: #ff6bcb;
-    color: white;
-    padding: 3px 6px;
-    border-radius: 3px;
-}
 
 /* ==================== BUTTONS & ACTIONS ==================== */
 .new-actions {
     display: flex;
     flex-wrap: wrap;
-    gap: 15px;
+    gap: 10px;
     margin-top: 20px;
     padding-top: 20px;
     border-top: 1px solid #2a2a4e;
 }
 
-/* Tìm đoạn này trong sanpham_chitiet.css và cập nhật */
 .cta-button {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    text-decoration: none;
-    padding: 12px 24px;
-    border-radius: 5px;
-    font-weight: bold;
-    transition: transform 0.2s ease;
-    flex: 1;
-    min-width: 140px;
-    cursor: pointer;
-    border: none;
-    
-    /* Neon Gradient */
+    gap: 8px; /* Khoảng cách icon và chữ */
+    padding: 10px 16px; /* Nhỏ gọn hơn */
+    border-radius: 6px;
+    font-size: 0.9rem; /* Chữ nhỏ hơn một chút */
+    font-weight: 600;
+    flex: 1; /* Các nút có độ rộng bằng nhau */
+    min-width: 100px;
+    white-space: nowrap; /* Không cho chữ xuống dòng */
     background: linear-gradient(135deg, #bb86fc, #9e86ff);
-    color: #0f0f1e !important; /* Thêm !important để không bị ghi đè bởi nav a */
-    box-shadow: 0 4px 15px rgba(187, 134, 252, 0.4);
+    color: #0f0f1e !important;
+    transition: all 0.2s ease;
 }
 
 .cta-button:hover {
     background: linear-gradient(135deg, #9e86ff, #bb86fc);
     transform: translateY(-3px);
 }
+.cta-button i {
+    font-size: 1.1rem;
+}
 
+/* Hiệu ứng riêng cho nút "Truy cập" để nổi bật hơn */
+.visit-btn {
+    background: linear-gradient(135deg, #03dac6, #018786);
+    box-shadow: 0 4px 12px rgba(3, 218, 198, 0.3);
+}
+.cta-button:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.1);
+}
 /* ==================== DETAILS & DESCRIPTION ==================== */
 .product-details-section h2 {
     font-size: 1.5em;

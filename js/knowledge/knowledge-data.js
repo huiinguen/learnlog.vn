@@ -166,17 +166,57 @@ void bubbleSort(int arr[], int n) {
   },
 
   {
-    id: 9,
-    title: "Mua tài khoản?",
-    category: "MMO",
-    subCategory: "Tài khoản",
-    answer: "rất rủi ro.",
+    id: 10,
+    title: "Đệ quy cơ bản: Tính giai thừa",
+    category: "Thuật toán",
+    subCategory: "C++",
+    answer:
+      "Giai thừa của n (n!) là tích các số từ 1 đến n. Công thức đệ quy: n! = n * (n-1)!. Điều kiện dừng là khi n = 0 hoặc n = 1, kết quả là 1.",
     code: {
+      lang: "C++",
       content: `
-      1.tài khoản bị dính điều tra
-      2.tài khoản bị hack đem bán lại
-      3.dễ bị back lại tài khoản
-      4.dễ bị nền tảng quét`,
+long long factorial(int n) {
+    if (n <= 1) return 1; // Điều kiện dừng (Base case)
+    return n * factorial(n - 1);
+}`,
+    },
+  },
+  {
+    id: 11,
+    title: "Dãy số Fibonacci",
+    category: "Thuật toán",
+    subCategory: "C++",
+    answer:
+      "Số Fibonacci thứ n được tính bằng tổng hai số Fibonacci đứng trước nó: F(n) = F(n-1) + F(n-2). Điều kiện dừng là khi n bằng 0 hoặc 1.",
+    code: {
+      lang: "C++",
+      content: `
+int fibonacci(int n) {
+    if (n <= 1) return n;
+    return fibonacci(n - 1) + fibonacci(n - 2);
+}`,
+    },
+  },
+  {
+    id: 12,
+    title: "Tìm kiếm nhị phân (Binary Search)",
+    category: "Thuật toán",
+    subCategory: "C++",
+    answer:
+      "Tìm kiếm bằng cách chia đôi mảng. Nếu phần tử ở giữa lớn hơn giá trị cần tìm, ta đệ quy vào nửa bên trái, ngược lại đệ quy vào nửa bên phải.",
+    code: {
+      lang: "C++",
+      content: `
+int binarySearch(int arr[], int left, int right, int x) {
+    if (right >= left) {
+        int mid = left + (right - left) / 2;
+        if (arr[mid] == x) return mid;
+        if (arr[mid] > x) 
+            return binarySearch(arr, left, mid - 1, x);
+        return binarySearch(arr, mid + 1, right, x);
+    }
+    return -1; // Không tìm thấy
+}`,
     },
   },
 ];

@@ -1,306 +1,195 @@
-// --- 1. Global function: Format currency ---
-function formatCurrency(price) {
-  if (typeof price !== "number") return "";
-  return price.toLocaleString("vi-VN", { style: "currency", currency: "VND" });
-}
+/**
+ * SANPHAM_CHITIET.JS - Cập nhật 2026
+ * 1. Loại bỏ hoàn toàn giá tiền/miễn phí.
+ * 2. Tối ưu nút bấm: Sao chép, Truy cập, Link gốc.
+ */
 
-// --- 2. Change main image ---
+// --- 1. Thay đổi ảnh chính trong Gallery ---
 function changeMainImage(newImageUrl) {
-  const mainImage = document.getElementById("mainProductImage");
-  if (mainImage) {
-    mainImage.src = newImageUrl;
-    document.querySelectorAll(".thumbnail-images img").forEach((thumb) => {
-      thumb.classList.remove("active");
-      const newName = newImageUrl.substring(newImageUrl.lastIndexOf("/") + 1);
-      const thumbName = thumb.src.substring(thumb.src.lastIndexOf("/") + 1);
-      if (thumbName === newName) thumb.classList.add("active");
-    });
-  }
+    const mainImage = document.getElementById("mainProductImage");
+    if (mainImage) {
+        mainImage.src = newImageUrl;
+        // Cập nhật trạng thái active cho thumbnail
+        document.querySelectorAll(".thumbnail-images img").forEach((thumb) => {
+            thumb.classList.remove("active");
+            if (thumb.src === newImageUrl) thumb.classList.add("active");
+        });
+    }
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-  const productDetailContainer = document.getElementById("productDetailContainer");
-  const urlParams = new URLSearchParams(window.location.search);
-  const productId = parseInt(urlParams.get("id"));
+    const productDetailContainer = document.getElementById("productDetailContainer");
+    const urlParams = new URLSearchParams(window.location.search);
+    const productId = parseInt(urlParams.get("id"));
 
-  // --- Helper: Show Toast ---
-  function showToast(message) {
-    let container = document.getElementById("toastContainer");
-    if (!container) {
-      container = document.createElement("div");
-      container.id = "toastContainer";
-      container.style.position = "fixed";
-      container.style.bottom = "20px";
-      container.style.right = "20px";
-      container.style.zIndex = "9999";
-      document.body.appendChild(container);
+    // --- Helper: Hiển thị thông báo Toast ---
+    function showToast(message) {
+        let container = document.getElementById("toastContainer");
+        if (!container) {
+            container = document.createElement("div");
+            container.id = "toastContainer";
+            Object.assign(container.style, {
+                position: "fixed",
+                bottom: "20px",
+                right: "20px",
+                zIndex: "9999"
+            });
+            document.body.appendChild(container);
+        }
+        const toast = document.createElement("div");
+        toast.textContent = message;
+        Object.assign(toast.style, {
+            background: "rgba(187, 134, 252, 0.9)",
+            color: "#0f0f1e",
+            padding: "10px 20px",
+            marginTop: "8px",
+            borderRadius: "6px",
+            fontWeight: "bold",
+            boxShadow: "0 4px 12px rgba(0,0,0,0.3)",
+            opacity: "0",
+            transition: "opacity 0.3s ease"
+        });
+        container.appendChild(toast);
+        setTimeout(() => (toast.style.opacity = "1"), 50);
+        setTimeout(() => {
+            toast.style.opacity = "0";
+            setTimeout(() => toast.remove(), 300);
+        }, 2500);
     }
-    const toast = document.createElement("div");
-    toast.textContent = message;
-    toast.style.background = "#333";
-    toast.style.color = "#fff";
-    toast.style.padding = "10px 15px";
-    toast.style.marginTop = "8px";
-    toast.style.borderRadius = "8px";
-    toast.style.boxShadow = "0 2px 6px rgba(0,0,0,0.3)";
-    toast.style.opacity = "0";
-    toast.style.transition = "opacity 0.3s ease";
-    container.appendChild(toast);
-    setTimeout(() => (toast.style.opacity = "1"), 50);
-    setTimeout(() => {
-      toast.style.opacity = "0";
-      setTimeout(() => toast.remove(), 300);
-    }, 2500);
-  }
 
-  if (!productDetailContainer) {
-    console.error("Product detail container not found!");
-    return;
-  }
-  if (isNaN(productId) || typeof allProducts === "undefined") {
-    productDetailContainer.innerHTML = '<p class="error-text" style="color:#ff79c6; text-align:center;">ID sản phẩm không hợp lệ hoặc dữ liệu chưa sẵn sàng.</p>';
-    return;
-  }
-
-  const product = allProducts.find((p) => p.id === productId);
-
-  if (product) {
-    displayProductDetails(product);
-    if (product.salePrice && product.saleEndDate) {
-      startSaleCountdown(product.saleEndDate);
-    }
-  } else {
-    productDetailContainer.innerHTML = '<p class="error-text" style="color:#ff79c6; text-align:center;">Không tìm thấy sản phẩm.</p>';
-  }
-
-  // ====================== RENDER STAR RATING ======================
-  function renderStarRating(rating) {
-    if (typeof rating !== "number" || rating < 0 || rating > 5) return "";
-    const fullStars = Math.floor(rating);
-    const hasHalfStar = rating % 1 >= 0.25 && rating % 1 <= 0.75;
-    let html = "";
-    for (let i = 0; i < 5; i++) {
-      if (i < fullStars) html += '<i class="fas fa-star filled"></i>';
-      else if (i === fullStars && hasHalfStar) html += '<i class="fas fa-star-half-alt filled"></i>';
-      else html += '<i class="far fa-star"></i>';
-    }
-    return `<div class="star-rating" title="${rating.toFixed(1)} / 5 sao">${html}</div>`;
-  }
-
-  // ====================== COUNTDOWN ======================
-  function startSaleCountdown(endDateString) {
-    const countdownElement = document.getElementById("saleCountdownTimer");
-    if (!countdownElement) return;
-    const endDate = new Date(endDateString).getTime();
-    let countdownInterval;
-    const updateCountdown = () => {
-      const now = new Date().getTime();
-      const distance = endDate - now;
-      if (distance < 0) {
-        countdownElement.innerHTML = "Ưu đãi đã kết thúc!";
-        clearInterval(countdownInterval);
+    // Kiểm tra dữ liệu
+    if (!productDetailContainer) return;
+    if (isNaN(productId) || typeof allProducts === "undefined") {
+        productDetailContainer.innerHTML = '<p class="error-text">Dữ liệu không hợp lệ.</p>';
         return;
-      }
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-      countdownElement.innerHTML = `Thời hạn sale: 
-        <span title="Ngày">${days} N</span> 
-        <span title="Giờ">${hours} G</span> 
-        <span title="Phút">${minutes} P</span> 
-        <span title="Giây">${seconds} S</span>`;
-    };
-    countdownInterval = setInterval(updateCountdown, 1000);
-    updateCountdown();
-  }
-
-  // ====================== HIỂN THỊ CHI TIẾT ======================
-  function displayProductDetails(prod) {
-    const functionsListHtml = prod.functions
-      ? `<div class="product-details-section">
-            <h2><i class="fas fa-check-circle"></i> Tính năng nổi bật</h2>
-            <ul class="professional-list">
-                ${prod.functions.split("\n").map((f) => `<li>${f.trim()}</li>`).join("")}
-            </ul>
-         </div>`
-      : "";
-
-    // ----- Giá -----
-    let priceHtml = "";
-    if (prod.price === 0) {
-      priceHtml = `<p class="product-price price-free">Giá: <span>Miễn phí</span></p>`;
-    } else if (prod.salePrice && prod.salePrice < prod.price) {
-      priceHtml = `
-        <div class="price-block">
-            <p class="product-price original-price on-sale">${formatCurrency(prod.price)}</p>
-            <p class="product-price sale-price">Giá ưu đãi: <span>${formatCurrency(prod.salePrice)}</span></p>
-            <p id="saleCountdownTimer" class="sale-countdown"></p>
-        </div>`;
-    } else {
-      priceHtml = `<p class="product-price">Giá: <span>${formatCurrency(prod.price)}</span></p>`;
     }
 
-    // ----- Meta info -----
-    const ratingHtml = prod.rating ? renderStarRating(prod.rating) : "";
-    const versionHtml = prod.version ? `<span class="meta-version"><i class="fas fa-code-branch"></i> Phiên bản: ${prod.version}</span>` : "";
-    const statusHtml = prod.status ? `<span class="meta-status"><i class="fas fa-info-circle"></i> ${prod.status}</span>` : "";
+    const product = allProducts.find((p) => p.id === productId);
 
-    // ----- NÚT HÀNH ĐỘNG MỚI -----
-    let actionSectionHtml = `<div class="product-actions new-actions">`;
-
-    // Nút Copy link
-    actionSectionHtml += `
-      <button class="cta-button copy-link-btn">
-        <i class="fas fa-link"></i> Copy sản phẩm
-      </button>`;
-
-    if (prod.price > 0) {
-      // Sản phẩm trả phí → Liên hệ
-      actionSectionHtml += `
-        <button class="cta-button contact-btn">
-          <i class="fas fa-comments"></i> Liên hệ mua
-        </button>`;
+    if (product) {
+        displayProductDetails(product);
     } else {
-      // Miễn phí → Đi đến đích
-      if (prod.resourceLink) {
-        actionSectionHtml += `
-          <a href="${prod.resourceLink}" class="cta-button" target="_blank" rel="noopener noreferrer">
-            <i class="fas fa-external-link-alt"></i> Đi đến đích
-          </a>`;
-      }
+        productDetailContainer.innerHTML = '<p class="error-text">Không tìm thấy sản phẩm.</p>';
     }
-    actionSectionHtml += `
-          <button class="cta-button copy-resource-btn" data-link="${prod.resourceLink}">
-            <i class="fas fa-link"></i> Copy Link Đích
-          </button>`;
-    actionSectionHtml += `</div>`;
 
-    // ----- HTML chính -----
-    const productHtml = `
-      <div class="product-gallery">
-        <div class="main-image-container">
-          <img id="mainProductImage" src="${prod.images_gallery[0] || 'images/placeholder.png'}" alt="${prod.name}">
-        </div>
-        ${prod.images_gallery.length > 1 ? `
-        <div class="thumbnail-images">
-          ${prod.images_gallery.map((img, idx) => `
-            <img src="${img}" alt="Thumbnail ${idx+1}" onclick="changeMainImage('${img}')" class="${idx===0 ? 'active' : ''}">
-          `).join("")}
-        </div>` : ""}
-      </div>
+    // --- 2. Render đánh giá sao ---
+    function renderStarRating(rating) {
+        if (!rating) return "";
+        const fullStars = Math.floor(rating);
+        const hasHalfStar = rating % 1 >= 0.25;
+        let html = "";
+        for (let i = 0; i < 5; i++) {
+            if (i < fullStars) html += '<i class="fas fa-star filled"></i>';
+            else if (i === fullStars && hasHalfStar) html += '<i class="fas fa-star-half-alt filled"></i>';
+            else html += '<i class="far fa-star"></i>';
+        }
+        return `<div class="star-rating" title="${rating}/5 sao">${html}</div>`;
+    }
 
-      <div class="product-info-content">
-        <h1 class="product-title">${prod.name}</h1>
-        <div class="meta-info-group">
-          ${ratingHtml}
-          ${versionHtml}
-          ${statusHtml}
-        </div>
-        <hr class="separator"/>
-        ${priceHtml}
-        ${actionSectionHtml}
-        <hr class="separator"/>
-        <div class="product-details-section">
-          <h2><i class="fas fa-align-left"></i> Mô tả chi tiết</h2>
-          <p class="product-description-text">${prod.description || "Không có mô tả chi tiết."}</p>
-        </div>
-        ${functionsListHtml}
-      </div>
-    `;
+    // --- 3. Hiển thị chi tiết sản phẩm ---
+    function displayProductDetails(prod) {
+        // Xử lý danh sách tính năng
+        const functionsHtml = prod.functions
+            ? `<div class="product-details-section">
+                <h2><i class="fas fa-layer-group"></i> Tính năng</h2>
+                <ul class="professional-list">
+                    ${prod.functions.split("\n").map(f => `<li>${f.trim()}</li>`).join("")}
+                </ul>
+               </div>`
+            : "";
 
-    productDetailContainer.innerHTML = productHtml;
+        // Thiết lập bộ nút hành động tối giản
+        let actionButtonsHtml = `<div class="product-actions new-actions">`;
+        
+        // Nút 1: Sao chép link trang hiện tại
+        actionButtonsHtml += `
+            <button class="cta-button btn-copy-page" title="Sao chép liên kết sản phẩm">
+                <i class="fas fa-copy"></i> Sao chép
+            </button>`;
 
-    // ====================== NÚT COPY LINK ======================
-    const copyBtn = document.querySelector(".copy-link-btn");
-    if (copyBtn) {
-      copyBtn.addEventListener("click", () => {
-        const url = window.location.href;
-        navigator.clipboard.writeText(url).then(() => {
-          showToast("Đã copy link sản phẩm!");
-          copyBtn.innerHTML = '<i class="fas fa-check"></i> Đã copy!';
-          setTimeout(() => {
-            copyBtn.innerHTML = '<i class="fas fa-link"></i> Copy Link';
-          }, 2000);
-        }).catch(() => {
-          showToast("Copy thất bại, vui lòng thử lại.");
+        // Nút 2: Đi đến đích (Nếu có link)
+        if (prod.resourceLink) {
+            actionButtonsHtml += `
+                <a href="${prod.resourceLink}" class="cta-button btn-visit" target="_blank" rel="noopener noreferrer">
+                    <i class="fas fa-external-link-alt"></i> Truy cập
+                </a>`;
+
+            // Nút 3: Sao chép link đích
+            actionButtonsHtml += `
+                <button class="cta-button btn-copy-link" data-link="${prod.resourceLink}" title="Sao chép link gốc">
+                    <i class="fas fa-link"></i> Link gốc
+                </button>`;
+        }
+        actionButtonsHtml += `</div>`;
+
+        // Render toàn bộ giao diện
+        productDetailContainer.innerHTML = `
+            <div class="product-gallery">
+                <div class="main-image-container">
+                    <img id="mainProductImage" src="${prod.images_gallery[0] || 'images/placeholder.png'}" alt="${prod.name}">
+                </div>
+                ${prod.images_gallery.length > 1 ? `
+                <div class="thumbnail-images">
+                    ${prod.images_gallery.map((img, idx) => `
+                        <img src="${img}" alt="Thumb" onclick="changeMainImage('${img}')" class="${idx === 0 ? 'active' : ''}">
+                    `).join("")}
+                </div>` : ""}
+            </div>
+
+            <div class="product-info-content">
+                <h1 class="product-title">${prod.name}</h1>
+                <div class="meta-info-group">
+                    ${renderStarRating(prod.rating)}
+                    ${prod.version ? `<span class="meta-version"><i class="fas fa-code-branch"></i> v${prod.version}</span>` : ""}
+                    ${prod.status ? `<span class="meta-status"><i class="fas fa-info-circle"></i> ${prod.status}</span>` : ""}
+                </div>
+                
+                <hr class="separator"/>
+                ${actionButtonsHtml}
+                <hr class="separator"/>
+
+                <div class="product-details-section">
+                    <h2><i class="fas fa-info-circle"></i> Mô tả</h2>
+                    <p class="product-description-text">${prod.description || "Đang cập nhật nội dung..."}</p>
+                </div>
+                ${functionsHtml}
+            </div>
+        `;
+
+        // Gán sự kiện cho các nút bấm
+        setupButtonEvents();
+    }
+
+    // --- 4. Thiết lập sự kiện cho nút bấm ---
+    function setupButtonEvents() {
+        // Sự kiện copy link trang hiện tại
+        document.querySelector(".btn-copy-page")?.addEventListener("click", function() {
+            navigator.clipboard.writeText(window.location.href).then(() => {
+                showToast("Đã sao chép liên kết trang!");
+            });
         });
-      });
-    }
-    const copyResourceBtn = document.querySelector(".copy-resource-btn");
-    if (copyResourceBtn) {
-      copyResourceBtn.addEventListener("click", () => {
-        const link = copyResourceBtn.getAttribute("data-link");
-        navigator.clipboard.writeText(link).then(() => {
-          showToast("Đã copy link đích thành công!");
-          copyResourceBtn.innerHTML = '<i class="fas fa-check"></i> Đã copy link!';
-          setTimeout(() => {
-            copyResourceBtn.innerHTML = '<i class="fas fa-link"></i> Copy Link Đích';
-          }, 2000);
+
+        // Sự kiện copy link gốc (resourceLink)
+        document.querySelector(".btn-copy-link")?.addEventListener("click", function() {
+            const link = this.getAttribute("data-link");
+            navigator.clipboard.writeText(link).then(() => {
+                showToast("Đã sao chép link gốc!");
+            });
         });
-      });
     }
 
-    // ====================== NÚT LIÊN HỆ → MỞ MODAL ======================
-    const contactBtn = document.querySelector(".contact-btn");
-    if (contactBtn) {
-      contactBtn.addEventListener("click", openContactModal);
+    // --- 5. Xử lý nút quay lại & Ghi nhớ bộ lọc ---
+    const backButton = document.querySelector(".fixed-back-btn");
+    if (backButton) {
+        const referrer = document.referrer;
+        let savedParams = "";
+
+        if (referrer && referrer.includes("sanpham.html")) {
+            savedParams = new URL(referrer).search;
+            sessionStorage.setItem("productListReturnState", savedParams);
+        } else {
+            savedParams = sessionStorage.getItem("productListReturnState") || "";
+        }
+        backButton.href = `sanpham.html${savedParams}`;
     }
-  }
-
-  // ====================== MODAL LIÊN HỆ ======================
-  function openContactModal() {
-    const existing = document.getElementById("contactModal");
-    if (existing) {
-      existing.style.display = "flex";
-      return;
-    }
-
-    const modal = document.createElement("div");
-    modal.id = "contactModal";
-    modal.className = "modal-overlay";
-    modal.innerHTML = `
-      <div class="modal-content">
-        <span class="modal-close"><i class="fas fa-times"></i></span>
-        <h3><i class="fas fa-shopping-cart"></i> Liên hệ mua hàng</h3>
-        <div class="contact-info">
-          <p><strong>Facebook:</strong> <a href="https://fb.com/hvcoder.vn" target="_blank">fb.com/hvcoder.vn</a></p>
-          <p><strong>Zalo:</strong> <a href="https://zalo.me/0988654321" target="_blank">0988.654.321</a></p>
-          <p><strong>Telegram:</strong> <a href="https://t.me/hvcoder" target="_blank">@hvcoder</a></p>
-          <p><strong>Email:</strong> hvcoder.vn@gmail.com</p>
-        </div>
-        <div style="margin-top:20px; text-align:center;">
-          <small style="color:#bb86fc;">Nhắn tin ngay để được báo giá tốt nhất!</small>
-        </div>
-      </div>
-    `;
-
-    document.body.appendChild(modal);
-
-    const closeBtn = modal.querySelector(".modal-close");
-    closeBtn.onclick = () => { modal.style.display = "none"; };
-    
-    modal.onclick = (e) => { 
-        if (e.target === modal) modal.style.display = "none"; 
-    };
-    
-    modal.style.display = "flex";
-  }
-
-  // ====================== BACK BUTTON + GHI NHỚ TRẠNG THÁI LỌC ======================
-  const backButton = document.querySelector(".fixed-back-btn");
-  if (backButton) {
-    const referrer = document.referrer;
-    let savedParams = "";
-
-    if (referrer && referrer.includes("sanpham.html")) {
-      const url = new URL(referrer);
-      savedParams = url.search;
-      sessionStorage.setItem("productListReturnState", savedParams);
-    } else {
-      const stored = sessionStorage.getItem("productListReturnState");
-      if (stored) savedParams = stored;
-    }
-    backButton.href = `sanpham.html${savedParams ? "?" + savedParams.substring(1) : ""}`;
-  }
 });
